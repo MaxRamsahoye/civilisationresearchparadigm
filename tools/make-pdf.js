@@ -27,7 +27,7 @@ const CSS = `
   @page {
     size: A4;
     margin: 24mm 24mm 22mm;
-    @bottom-left { content: 'civilisationalparadigm'; font-family: 'IBM Plex Sans', sans-serif; font-size: 8pt; color: #6a3fc4; vertical-align: middle; }
+    @bottom-left { content: 'civilisationalparadigm'; font-family: 'IBM Plex Sans', sans-serif; font-size: 8pt; color: #007541; vertical-align: middle; }
     @bottom-right { content: counter(page); font-family: 'IBM Plex Sans', sans-serif; font-size: 8pt; color: #777; vertical-align: middle; }
   }
   @page :first {
@@ -35,7 +35,7 @@ const CSS = `
   }
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   body { margin: 0; font-family: 'ET Bembo', Georgia, serif; font-size: 13.5pt; line-height: 1.42; color: #000; }
-  a { color: #6a3fc4; text-decoration: none; }
+  a { color: #007541; text-decoration: none; }
   .amp { font-style: normal; }
   /* the title on a page of its own, a little below the middle */
   .title-page { padding-top: 92mm; break-after: page; }
@@ -53,14 +53,14 @@ const CSS = `
   h4, h5 { margin: 16pt 0 5pt; font-size: 13.5pt; font-weight: 600; break-after: avoid; }
   p { margin: 0 0 9pt; orphans: 3; widows: 3; }
   /* the sections in the site's band (the Overview, then Basis and Contents
-     together) on pages of their own in its midnight purple, edge to edge,
+     together) on pages of their own in its midnight green, edge to edge,
      their text centred on the page */
-  @page band { margin: 0; background: #1d1135; @bottom-left { content: none; } @bottom-right { content: none; } }
+  @page band { margin: 0; background: #002110; @bottom-left { content: none; } @bottom-right { content: none; } }
   .band-page {
     page: band; break-before: page; break-inside: avoid;
     box-sizing: border-box; min-height: 296.5mm; padding: 24mm;
     display: flex; flex-direction: column; justify-content: center;
-    background: #1d1135; color: #fbf6ec;
+    background: #002110; color: #fbf6ec;
   }
   .band-page a { color: inherit; text-decoration: underline; text-underline-offset: 2pt; }
   /* a little smaller than the article's text, so that the Overview keeps to its page */
@@ -70,8 +70,8 @@ const CSS = `
   .band-page h2 { margin-top: 0; }
   .band-page section > :last-child { margin-bottom: 0; }
   /* the darker band of the site (Basis): edge to edge across its page, in
-     the darker shade of the midnight purple */
-  .band-page section.band-alt { margin: 0 -24mm; padding: 16mm 24mm; background: #170e2a; }
+     the darker shade of the midnight green */
+  .band-page section.band-alt { margin: 0 -24mm; padding: 16mm 24mm; background: #001a0c; }
   /* first on its page, it runs up to the top edge: the top of the page, not
      a band across it, and what follows sits below it rather than centred */
   .band-page:has(> section.band-alt:first-child) { justify-content: flex-start; }

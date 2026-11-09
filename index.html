@@ -48,9 +48,10 @@
         if (localStorage.getItem('ce.blueLinks') !== 'off') document.documentElement.classList.add('colour');  // blue links (c): on by default
         // ET Bembo headings are the default; f switches to Inter and back
         if (localStorage.getItem('ce.headings') !== 'sans') document.documentElement.classList.add('serif-headings');
-        // the band colour (b): midnight purple by default, or sepia, midnight blue or black
-        var band = localStorage.getItem('ce.bandColour') || 'purple';
-        if (band === 'purple' || band === 'midnight' || band === 'black') document.documentElement.classList.add('band-' + band);
+        // the band colour (b): midnight green by default, or sepia, midnight blue or black
+        var band = localStorage.getItem('ce.bandColour') || 'green';
+        if (band === 'purple') band = 'green';  // the default band was purple before it was green
+        if (band === 'green' || band === 'midnight' || band === 'black') document.documentElement.classList.add('band-' + band);
         // design 2 is the default; d switches to design 1 and back
         if (localStorage.getItem('ce.design') !== '1') document.documentElement.classList.add('design-2');
         // the Overview's shaded band is the default; h switches to dividing lines
@@ -68,7 +69,7 @@
   <meta property="og:image" content="https://maxramsahoye.github.io/civilisationresearchparadigm/preview.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="A wheel of four violet quadrants around a hollow centre, the site’s loading mark">
+  <meta property="og:image:alt" content="A wheel of four green quadrants around a hollow centre, the site’s loading mark">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -178,27 +179,27 @@
       --canvas-ink: #ffffff;
       --canvas-accent: #ffffff;
       --canvas-track-tint: rgba(255, 255, 255, 0.15);
-      --selection-bg: rgba(205, 185, 245, 0.35);
-      --note-highlight: #3a2d55;
-      --rule: #2c2347;
+      --selection-bg: rgba(145, 215, 180, 0.35);
+      --note-highlight: #084029;
+      --rule: #05331c;
       --muted: #8c8c8c;
-      --link-blue: #c4b5fd;
-      /* the midnight purple, as with the white theme's default band */
-      --inverse-bg: #1d1135;
+      --link-blue: #89d5a6;
+      /* the midnight green, as with the white theme's default band */
+      --inverse-bg: #002110;
       --inverse-ink: #fbf6ec;
-      --inverse-link: #c4b5fd;
+      --inverse-link: #89d5a6;
     }
 
-    /* b (white theme only) cycles the Overview and footer: midnight purple
+    /* b (white theme only) cycles the Overview and footer: midnight green
        (the default), light sepia (above), midnight blue, black */
-    html.band-purple:not([data-theme]) {
-      /* links and highlights violet, rather than blue */
-      --link-blue: #6a3fc4;
-      --selection-bg: rgba(170, 140, 230, 0.3);
-      --note-highlight: #ebe4f8;
-      --inverse-bg: #1d1135;
+    html.band-green:not([data-theme]) {
+      /* links and highlights green, rather than blue */
+      --link-blue: #007541;
+      --selection-bg: rgba(66, 184, 132, 0.3);
+      --note-highlight: #d8eee3;
+      --inverse-bg: #002110;
       --inverse-ink: #fbf6ec;
-      --inverse-link: #c4b5fd;
+      --inverse-link: #89d5a6;
     }
 
     html.band-midnight:not([data-theme]) {
@@ -554,10 +555,10 @@
       height: auto;
       overflow: visible;
       transform: none;
-      --w1: #5b3f99;
-      --w2: #4d3590;
-      --w3: #432c7a;
-      --w4: #2f1d5c;
+      --w1: #00653b;
+      --w2: #005a2d;
+      --w3: #004c28;
+      --w4: #00361a;
     }
 
     .loader-wheel path {
@@ -594,9 +595,9 @@
 
     html[data-theme="dark"] .loader.loader-complete .loader-wheel {
       --w1: var(--link-blue);
-      --w2: color-mix(in srgb, var(--link-blue) 70%, #6a3fc4);
-      --w3: color-mix(in srgb, var(--link-blue) 40%, #6a3fc4);
-      --w4: #6a3fc4;
+      --w2: color-mix(in srgb, var(--link-blue) 70%, #007541);
+      --w3: color-mix(in srgb, var(--link-blue) 40%, #007541);
+      --w4: #007541;
     }
 
     @keyframes loader-spin {
@@ -1192,7 +1193,7 @@
       --inverse-bg-alt: color-mix(in srgb, var(--inverse-bg) 80%, #000);
     }
 
-    :root:not([data-theme]):not(.band-purple):not(.band-midnight):not(.band-black) {
+    :root:not([data-theme]):not(.band-green):not(.band-midnight):not(.band-black) {
       --inverse-bg-alt: #f1e6d0;
     }
 
@@ -2781,7 +2782,7 @@
       });
 
       // b cycles the Overview and footer colours (white theme); c toggles the blue accent.
-      var BANDS = ['purple', '', 'midnight', 'black'];  // '' is light sepia; purple is the default
+      var BANDS = ['green', '', 'midnight', 'black'];  // '' is light sepia; green is the default
 
       function cycleBand() {
         var current = BANDS.filter(function (b) { return b && root.classList.contains('band-' + b); })[0] || '';
@@ -3083,6 +3084,6 @@
       });
     })();
   </script>
-  <script src="assets/tools.js?v=c71ce0b8" data-search-scope=".article-body, .endnotes" data-search-exclude="#overview" data-hide-until="#overview"></script>
+  <script src="assets/tools.js?v=6b227cc7" data-search-scope=".article-body, .endnotes" data-search-exclude="#overview" data-hide-until="#overview"></script>
 </body>
 </html>

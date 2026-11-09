@@ -397,7 +397,7 @@
 // scroll, three double pyramids (octahedra, drawn with flat shading)
 // drift across a blank screen, each turning about two axes as it goes;
 // they turn back from each edge and glance off each other, darkening to
-// purple and easing back to violet; a click adds another (three times
+// deep green and easing back to bright green; a click adds another (three times
 // at most), and any other movement, key or scroll ends it. Not for those
 // who prefer less motion. (On every page of the site.)
 (function () {
@@ -422,7 +422,7 @@
   // a regular octahedron: six corners, eight faces
   var V = [[0, -54, 0], [0, 54, 0], [54, 0, 0], [-54, 0, 0], [0, 0, 54], [0, 0, -54]];
   var F = [[0, 2, 4], [0, 4, 3], [0, 3, 5], [0, 5, 2], [1, 4, 2], [1, 3, 4], [1, 5, 3], [1, 2, 5]];
-  var PURPLE = [91, 63, 153], VIOLET = [150, 100, 250];
+  var DEEP = [0, 101, 59], BRIGHT = [0, 163, 100];
   var LIGHT = (function (l) { var n = Math.hypot(l[0], l[1], l[2]); return l.map(function (c) { return c / n; }); })([-0.5, -0.7, 0.9]);
   var SPEED = 150;
   function draw(o, flush) {
@@ -432,7 +432,7 @@
       var x = v[0] * cy + v[2] * sy, z = -v[0] * sy + v[2] * cy, y = v[1];
       return [x, y * cx - z * sx, y * sx + z * cx];
     });
-    var base = VIOLET.map(function (c, k) { return c + (PURPLE[k] - c) * flush; });
+    var base = BRIGHT.map(function (c, k) { return c + (DEEP[k] - c) * flush; });
     F.map(function (f) {
       var a = P[f[0]], b = P[f[1]], c = P[f[2]];
       var u = [b[0] - a[0], b[1] - a[1], b[2] - a[2]], w = [c[0] - a[0], c[1] - a[1], c[2] - a[2]];
@@ -525,7 +525,7 @@
       }
     }
     shapes.forEach(function (o) {
-      // deep purple at the moment it turns back, easing back to violet
+      // deep green at the moment it turns back, easing back to bright green
       // over two and a half seconds
       var since = (t - o.hit) / 2500;
       draw(o, since >= 1 ? 0 : 1 - since * since);
