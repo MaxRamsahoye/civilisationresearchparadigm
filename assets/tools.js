@@ -425,7 +425,7 @@ var SCREENSAVER = false;
   // a regular octahedron: six corners, eight faces
   var V = [[0, -54, 0], [0, 54, 0], [54, 0, 0], [-54, 0, 0], [0, 0, 54], [0, 0, -54]];
   var F = [[0, 2, 4], [0, 4, 3], [0, 3, 5], [0, 5, 2], [1, 4, 2], [1, 3, 4], [1, 5, 3], [1, 2, 5]];
-  var DEEP = [0, 101, 59], BRIGHT = [0, 163, 100];
+  var DEEP = [35, 121, 77], BRIGHT = [38, 177, 113];
   var LIGHT = (function (l) { var n = Math.hypot(l[0], l[1], l[2]); return l.map(function (c) { return c / n; }); })([-0.5, -0.7, 0.9]);
   var SPEED = 150;
   function draw(o, flush) {
