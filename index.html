@@ -698,7 +698,7 @@
       position: fixed;
       /* vertically centred on the theme toggle */
       top: 31px;
-      right: calc(var(--frame-margin) + 40px);
+      left: calc(var(--frame-margin) + 40px);
       width: 28px;
       height: 28px;
       transform: rotate(-90deg);
@@ -730,10 +730,62 @@
       opacity: 0;
     }
 
+    @media (max-width: 960px) {
+      .progress-ring {
+        left: 24px;
+      }
+    }
+
     @media (max-width: 600px) {
       .progress-ring {
         top: 22px;
+      }
+    }
+
+    /* on the canvas (past the Overview, as the ring): the site's name in the
+       top right corner, mirroring the title in the top left at the top of
+       the page; it takes you back to the top */
+    .canvas-title {
+      position: fixed;
+      top: 24px;
+      right: calc(var(--frame-margin) + 40px);
+      z-index: 40;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 18px;
+      line-height: 1.15;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-align: right;
+      white-space: nowrap;
+      color: var(--frame-ink);
+      text-decoration: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.6s ease, visibility 0s linear 0.6s, color 0.2s ease;
+    }
+
+    .canvas-title:hover {
+      color: var(--frame-accent);
+    }
+
+    body.past-overview:not(.footer-in-view) .canvas-title {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.6s ease, color 0.2s ease;
+    }
+
+    @media (max-width: 960px) {
+      .canvas-title {
+        top: 24px;
         right: 24px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .canvas-title {
+        top: 19px;
+        font-size: 15px;
       }
     }
 
@@ -1671,9 +1723,9 @@
       }
     }
 
-    /* the footer (its sitemap hidden): one column, left-aligned, the quote
-       above, then the title with the byline beside it on one line (the
-       byline wrapping beneath the title where there is no room) */
+    /* the footer (its sitemap hidden): one column, left-aligned, the title
+       with the quote beside it on one line (the quote wrapping beneath the
+       title where there is no room) */
     .site-footer {
       padding-top: 40px;
       padding-bottom: 36px;
@@ -1695,13 +1747,13 @@
       width: auto;
     }
 
-    .site-footer .footer-inner .footer-subtitle {
-      flex-basis: 100%;
-      margin-bottom: 8px;
+    .site-footer .footer-inner .footer-title {
+      order: 1;
     }
 
-    .site-footer .footer-inner .footer-author {
-      margin-top: 0;
+    .site-footer .footer-inner .footer-subtitle {
+      order: 2;
+      margin-bottom: 0;
     }
 
     .site-footer .footer-subtitle .hang {
@@ -2132,6 +2184,8 @@
     <circle class="progress-ring-fill" cx="15" cy="15" r="13"/>
   </svg>
 
+  <a class="canvas-title title-top" href="#" aria-label="Civilisational Paradigm: back to the top">Civilisational<br>Paradigm</a>
+
   <button class="scroll-top-btn" type="button" aria-label="Scroll to top">
     <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round">
       <polygon points="14,9.078 20.328,18.922 14,15.969 7.672,18.922"/>
@@ -2249,7 +2303,6 @@
       <div class="footer-head">
       <p class="footer-subtitle"><em><span class="hang">“</span>Very young to the field whose paradigm they change”</em></p>
       <p class="footer-title"><a class="heading-link" href="./">civilisationalparadigm</a></p>
-      <p class="footer-author">A project by <a class="author-link" href="https://maxramsahoye.github.io/max/" target="_blank" rel="noopener">Max Ramsahoye</a></p>
       </div>
       <!-- hidden: remove the hidden attribute to show the menu again -->
       <nav class="footer-sitemap" aria-label="Sitemap" hidden>
