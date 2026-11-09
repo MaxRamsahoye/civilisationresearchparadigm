@@ -1686,6 +1686,22 @@
       }
     }
 
+    /* the footer's text centred (while the sitemap beside it is hidden);
+       the opening quote no longer hangs, so the line centres on its text */
+    .footer-inner {
+      grid-template-columns: minmax(0, 1fr);
+      justify-content: center;
+      text-align: center;
+    }
+
+    .footer-head {
+      margin: 0 auto;
+    }
+
+    .site-footer .footer-subtitle .hang {
+      margin-left: 0;
+    }
+
     .site-footer .footer-inner .footer-url {
       margin-top: 56px;
     }
@@ -2226,9 +2242,9 @@
     <footer class="site-footer">
       <div class="footer-inner">
       <div class="footer-head">
-      <p class="footer-subtitle"><em><span class="hang">“</span>Conditioning behaviour and its consequences”</em></p>
+      <p class="footer-subtitle"><em><span class="hang">“</span>very young to the field whose paradigm they change”</em></p>
       <p class="footer-title"><a class="heading-link" href="./">civilisationalparadigm</a></p>
-      <p class="footer-author">A project by <a class="author-link" href="https://maxramsahoye.github.io/max/" target="_blank" rel="noopener">Max Ramsahoye</a> on the philosophy of agency</p>
+      <p class="footer-author">A project by <a class="author-link" href="https://maxramsahoye.github.io/max/" target="_blank" rel="noopener">Max Ramsahoye</a></p>
       </div>
       <!-- hidden: remove the hidden attribute to show the menu again -->
       <nav class="footer-sitemap" aria-label="Sitemap" hidden>
