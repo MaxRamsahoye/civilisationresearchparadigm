@@ -2069,14 +2069,6 @@
       </svg>
       <span class="ctl-note" aria-live="polite">Copy email</span>
     </button>
-    <a class="menu-btn" href="list/" aria-label="Pages">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-        <line x1="3" y1="6" x2="21" y2="6"/>
-        <line x1="3" y1="12" x2="21" y2="12"/>
-        <line x1="3" y1="18" x2="21" y2="18"/>
-      </svg>
-      <span class="ctl-note" aria-hidden="true">Menu <kbd>M</kbd></span>
-    </a>
     <button class="theme-toggle" type="button" aria-label="Toggle theme">
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
         <circle cx="12" cy="12" r="4.5"/>
@@ -2159,7 +2151,7 @@
             <section id="basis" class="in-band band-alt">
               <h2><a class="heading-link" href="#basis">Basis</a></h2>
 
-              <p>Before co-founding the <a href="https://civilizationresearchinstitute.org/" target="_blank" rel="noopener">Civilization Research Institute</a> in 2021, Daniel Schmachtenberger developed an earlier think-tank concept, <em>The Emergence Project</em> (2017), oriented towards &lsquo;the emergence of a regenerative, thriving, omni-considerate global civilization&rsquo;. Its central premise was a &lsquo;model for successfully addressing the unprecedented complexity and scale&rsquo; of civilisational problems: the <a href="sources/#schmachtenberger-emergence">Emergence Model</a>, a four-quadrant framework derived from Ken Wilber&rsquo;s integral theory, into which &lsquo;all factors that condition human behavior fit&rsquo;. This article takes that model as its basis, revisiting its precursors and elaborating it into a successor: the complex emergence model &ndash; as a development in applied metatheory.</p>
+              <p>Before co-founding the <a href="https://civilizationresearchinstitute.org/" target="_blank" rel="noopener">Civilization Research Institute</a> in 2021, Daniel Schmachtenberger developed an earlier think-tank concept, <em>The Emergence Project</em> (2017), oriented towards &lsquo;the emergence of a regenerative, thriving, omni-considerate global civilization&rsquo;. Its central premise was a &lsquo;model for successfully addressing the unprecedented complexity and scale&rsquo; of civilisational problems: the Emergence Model, a four-quadrant framework derived from Ken Wilber&rsquo;s integral theory, into which &lsquo;all factors that condition human behavior fit&rsquo;. This article takes that model as its basis, revisiting its precursors and elaborating it into a successor: the complex emergence model &ndash; as a development in applied metatheory.</p>
             </section>
 
             <section id="contents" class="in-band" data-toc="off">
@@ -2195,15 +2187,8 @@
       <p class="footer-author">A project by <a class="author-link" href="https://maxramsahoye.github.io/max/" target="_blank" rel="noopener">Max Ramsahoye</a> on the philosophy of agency</p>
       </div>
       <nav class="footer-sitemap" aria-label="Sitemap">
-        <p class="sitemap-heading"><a href="list/">All Pages</a></p>
         <ol>
           <li><a href="./">Article</a></li>
-          <li><a href="overviews/">Overviews</a></li>
-          <li><a href="model/">The Model</a></li>
-          <li><a href="diagram/">Models</a></li>
-          <li><a href="timeline/">Timeline</a></li>
-          <li><a href="lexicon/">Concepts</a></li>
-          <li><a href="sources/">Sources</a></li>
           <li><a class="footer-contact" href="mailto:maxjosephholly@outlook.com" data-email="maxjosephholly@outlook.com">Contact</a></li>
         </ol>
       </nav>
@@ -2788,17 +2773,6 @@
         if (tag === 'INPUT' || tag === 'TEXTAREA' || (document.activeElement && document.activeElement.isContentEditable)) return;
         flashHover(themeToggle);
         themeToggle.click();
-      });
-
-      // m opens the Pages menu, as the hamburger does
-      var menuBtn = document.querySelector('.menu-btn');
-      document.addEventListener('keydown', function (e) {
-        if (e.key !== 'm' && e.key !== 'M') return;
-        if (e.metaKey || e.ctrlKey || e.altKey) return;
-        var tag = document.activeElement && document.activeElement.tagName;
-        if (tag === 'INPUT' || tag === 'TEXTAREA' || (document.activeElement && document.activeElement.isContentEditable)) return;
-        flashHover(menuBtn);
-        menuBtn.click();
       });
 
       // b cycles the Overview and footer colours (white theme); c toggles the blue accent.
