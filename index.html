@@ -1671,16 +1671,37 @@
       }
     }
 
-    /* the footer's text centred (while the sitemap beside it is hidden);
-       the opening quote no longer hangs, so the line centres on its text */
+    /* the footer (its sitemap hidden): one column, left-aligned, the quote
+       above, then the title with the byline beside it on one line (the
+       byline wrapping beneath the title where there is no room) */
+    .site-footer {
+      padding-top: 40px;
+      padding-bottom: 36px;
+    }
+
     .footer-inner {
       grid-template-columns: minmax(0, 1fr);
-      justify-content: center;
-      text-align: center;
+      text-align: left;
+      /* level with the article's text column */
+      width: var(--text-column);
     }
 
     .footer-head {
-      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      column-gap: 24px;
+      row-gap: 6px;
+      width: auto;
+    }
+
+    .site-footer .footer-inner .footer-subtitle {
+      flex-basis: 100%;
+      margin-bottom: 8px;
+    }
+
+    .site-footer .footer-inner .footer-author {
+      margin-top: 0;
     }
 
     .site-footer .footer-subtitle .hang {
