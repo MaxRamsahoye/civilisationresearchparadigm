@@ -1,2 +1,2 @@
-# complexemergencemodel.systems
-https://maxramsahoye.github.io/complexemergencemodel.systems/
+# civilisationresearchparadigm
+https://maxramsahoye.github.io/civilisationresearchparadigm/
