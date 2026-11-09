@@ -1087,6 +1087,14 @@
       margin-top: 88px;
     }
 
+    /* a 2px rule between the clusters of sections (above Meta and Macro),
+       with the same space above and below it */
+    .article-body section.divided {
+      margin-top: 72px;
+      padding-top: 72px;
+      border-top: 2px solid var(--canvas-ink);
+    }
+
     /* headings link to themselves; menu and heading links land with room above */
     .article-body section:not(#overview),
     .article-body h3[id] {
@@ -1113,7 +1121,7 @@
     .article-body h3 {
       font-family: 'Inter', sans-serif;
       font-weight: 500;
-      font-style: italic;
+      font-style: normal;
       letter-spacing: -0.01em;
       font-size: 0.9em;
       line-height: 1.25;
@@ -2270,7 +2278,7 @@
               <h3 id="civilisational-transition"><a class="heading-link" href="#civilisational-transition">Civilisational Transition</a></h3>
             </section>
 
-            <section id="meta">
+            <section id="meta" class="divided">
               <h2><a class="heading-link" href="#meta">Meta</a></h2>
 
               <h3 id="metacrisis"><a class="heading-link" href="#metacrisis">Metacrisis</a></h3>
@@ -2280,7 +2288,7 @@
               <h3 id="metatheory"><a class="heading-link" href="#metatheory">Metatheory</a></h3>
             </section>
 
-            <section id="macro">
+            <section id="macro" class="divided">
               <h2><a class="heading-link" href="#macro">Macro</a></h2>
 
               <h3 id="macrohistory"><a class="heading-link" href="#macrohistory">Macrohistory</a></h3>
