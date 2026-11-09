@@ -27,7 +27,7 @@ const CSS = `
   @page {
     size: A4;
     margin: 24mm 24mm 22mm;
-    @bottom-left { content: 'civilisationalparadigmmodel.systems'; font-family: 'IBM Plex Sans', sans-serif; font-size: 8pt; color: #6a3fc4; vertical-align: middle; }
+    @bottom-left { content: 'civilisationalparadigmmodel'; font-family: 'IBM Plex Sans', sans-serif; font-size: 8pt; color: #6a3fc4; vertical-align: middle; }
     @bottom-right { content: counter(page); font-family: 'IBM Plex Sans', sans-serif; font-size: 8pt; color: #777; vertical-align: middle; }
   }
   @page :first {
