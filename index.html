@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link id="favicon-ico" rel="icon" href="favicon/favicon-light.ico" sizes="any">
-  <link id="favicon-32" rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32-light.png">
-  <link id="favicon-192" rel="icon" type="image/png" sizes="192x192" href="favicon/favicon-192-light.png">
-  <link id="favicon-apple" rel="apple-touch-icon" href="favicon/apple-touch-icon-light.png">
+  <link id="favicon-ico" rel="icon" href="favicon/favicon-light.ico?v=p" sizes="any">
+  <link id="favicon-32" rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32-light.png?v=p">
+  <link id="favicon-192" rel="icon" type="image/png" sizes="192x192" href="favicon/favicon-192-light.png?v=p">
+  <link id="favicon-apple" rel="apple-touch-icon" href="favicon/apple-touch-icon-light.png?v=p">
   <script>
     (function () {
       try {
@@ -38,10 +38,10 @@
         }
         if (t === 'dark') {
           var suffix = 'dark';
-          document.getElementById('favicon-ico').href = 'favicon/favicon-' + suffix + '.ico';
-          document.getElementById('favicon-32').href = 'favicon/favicon-32-' + suffix + '.png';
-          document.getElementById('favicon-192').href = 'favicon/favicon-192-' + suffix + '.png';
-          document.getElementById('favicon-apple').href = 'favicon/apple-touch-icon-' + suffix + '.png';
+          document.getElementById('favicon-ico').href = 'favicon/favicon-' + suffix + '.ico?v=p';
+          document.getElementById('favicon-32').href = 'favicon/favicon-32-' + suffix + '.png?v=p';
+          document.getElementById('favicon-192').href = 'favicon/favicon-192-' + suffix + '.png?v=p';
+          document.getElementById('favicon-apple').href = 'favicon/apple-touch-icon-' + suffix + '.png?v=p';
         }
       } catch (e) {}
       try {
@@ -69,7 +69,7 @@
   <meta property="og:image" content="https://maxramsahoye.github.io/civilisationresearchparadigm/preview.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="A wheel of four green quadrants around a hollow centre, the site’s loading mark">
+  <meta property="og:image:alt" content="A three-by-three grid of green squares, its centre column darker: the site’s loading mark">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -541,72 +541,57 @@
       stroke: var(--link);
     }
 
-    .loader.loader-stacking > svg:not(.loader-wheel) {
+    .loader.loader-stacking > svg:not(.loader-grid) {
       display: none;
     }
 
-    /* the default loading screen: a simplified Emergence Model, its four
-       quadrants arriving one by one around a spinning wheel, which turns the
-       accent once the page is ready */
-    /* (in 2.5D: the disc laid flat and seen from above at an angle, with
-       its thickness beneath it, turning in its own plane) */
-    .loader svg.loader-wheel {
-      width: 120px;
-      height: auto;
+    /* the default loading screen: the nine subframes of civilisation
+       research as a three-by-three grid, a column for each cluster. Meta
+       (left) arrives first, then Macro (right), then Civilisational (centre),
+       which the other two inform; once the page is ready the grid turns the
+       accent, the Civilisational column strongest */
+    .loader svg.loader-grid {
+      width: 84px;
+      height: 84px;
       overflow: visible;
       transform: none;
-      --w1: #00653b;
-      --w2: #005a2d;
-      --w3: #004c28;
-      --w4: #00361a;
+      --t-side: color-mix(in srgb, var(--canvas-ink) 16%, var(--canvas-bg));
+      --t-core: color-mix(in srgb, var(--canvas-ink) 42%, var(--canvas-bg));
     }
 
-    .loader-wheel path {
-      stroke: var(--canvas-bg);
-      stroke-width: 2.5;
-      stroke-linejoin: round;
+    .loader-grid rect {
+      fill: var(--t-side);
       transform-box: fill-box;
       transform-origin: center;
       opacity: 0;
-      transition: fill 0.3s ease;
-      animation: loader-quadrant-in var(--dur) cubic-bezier(0.22, 1, 0.36, 1) var(--delay) forwards;
+      transition: fill 0.45s ease var(--turn, 0ms);
+      animation: loader-tile-in var(--dur) cubic-bezier(0.22, 1, 0.36, 1) var(--delay) forwards;
     }
 
-    /* its sides: the same quadrants, darker, without the gaps between them */
-    .loader-wheel .lw-side {
-      filter: brightness(0.62);
+    .loader-grid rect.core {
+      fill: var(--t-core);
     }
 
-    .loader-wheel .lw-side path {
-      stroke: none;
+    .loader.loader-complete .loader-grid {
+      --t-side: color-mix(in srgb, var(--link-blue) 50%, var(--canvas-bg));
+      --t-core: var(--link-blue);
     }
 
-    .loader-wheel path:nth-of-type(1) { fill: var(--w1); }
-    .loader-wheel path:nth-of-type(2) { fill: var(--w2); }
-    .loader-wheel path:nth-of-type(3) { fill: var(--w4); }
-    .loader-wheel path:nth-of-type(4) { fill: var(--w3); }
-
-    .loader.loader-complete .loader-wheel {
-      --w1: color-mix(in srgb, var(--link-blue) 45%, var(--canvas-bg));
-      --w2: color-mix(in srgb, var(--link-blue) 60%, var(--canvas-bg));
-      --w3: color-mix(in srgb, var(--link-blue) 78%, var(--canvas-bg));
-      --w4: var(--link-blue);
+    /* still waiting for the page once the grid is built: a slow wave runs
+       across it, column by column */
+    .loader-grid.loader-waiting rect {
+      opacity: 1;
+      animation: loader-tile-wave 1.5s ease-in-out var(--wave) infinite;
     }
 
-    html[data-theme="dark"] .loader.loader-complete .loader-wheel {
-      --w1: var(--link-blue);
-      --w2: color-mix(in srgb, var(--link-blue) 70%, #007541);
-      --w3: color-mix(in srgb, var(--link-blue) 40%, #007541);
-      --w4: #007541;
+    @keyframes loader-tile-in {
+      from { opacity: 0; transform: translateY(-10px) scale(0.6); }
+      to { opacity: 1; transform: none; }
     }
 
-    @keyframes loader-spin {
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes loader-quadrant-in {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
+    @keyframes loader-tile-wave {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.45; }
     }
 
     .page {
@@ -1939,8 +1924,8 @@
         // The page script plays the completion chord on this.
         window.loaderComplete = true;
         document.dispatchEvent(new Event('loadercomplete'));
-        // the finished stack (already blue from the moment the last slab
-        // landed) holds a moment, then fades away
+        // the finished grid (already the accent from the moment the last
+        // tile landed) holds a moment, then fades away
         var stacking = loader.classList.contains('loader-stacking');
         var hold = stacking ? Math.max(200, 650 - (performance.now() - (window.loaderBlueAt || 0))) : 200;
         loader.classList.add('loader-complete');
@@ -1950,35 +1935,32 @@
         }, hold);
       }
 
-      // Default: the wheel. The ring stays as the fallback, for anyone who
+      // Default: the grid. The ring stays as the fallback, for anyone who
       // prefers reduced motion (or who sets localStorage.loader = 'ring').
       var useRing = false;
       try { useRing = localStorage.getItem('ce.loader') === 'ring'; } catch (e) {}
       if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) useRing = true;
       if (!useRing) {
-        var LEVELS = 4, STEP = 420, DUR = 700, MAX_WAIT = 7000;
-        // the four quadrants as rings of a disc, clockwise from the upper left
-        var R = 48, r = 12;
-        function at(rad, deg) { var t = deg * Math.PI / 180; return (rad * Math.cos(t)).toFixed(2) + ' ' + (rad * Math.sin(t)).toFixed(2); }
-        var paths = '';
-        for (var i = 0; i < LEVELS; i++) {
-          var a0 = 180 + i * 90, a1 = a0 + 90;
-          paths += '<path style="--delay:' + (i * STEP) + 'ms;--dur:' + DUR + 'ms" d="M' + at(R, a0) + 'A' + R + ' ' + R + ' 0 0 1 ' + at(R, a1) +
-            'L' + at(r, a1) + 'A' + r + ' ' + r + ' 0 0 0 ' + at(r, a0) + 'Z"/>';
-        }
-        // laid flat (half as deep as wide), turning in its own plane, over
-        // copies of itself a step lower each, which make its thickness
-        var SPIN = '<animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="2.4s" begin="0s" repeatCount="indefinite"/>';
-        var disc = function (dy, cls) {
-          return '<g' + (cls ? ' class="' + cls + '"' : '') + ' transform="translate(0 ' + dy + ')"><g transform="scale(1 0.5)"><g>' + SPIN + paths + '</g></g></g>';
-        };
-        var DEPTH = 10, layers = '';
-        for (var d = DEPTH; d >= 1; d--) layers += disc(d, 'lw-side');
-        loader.insertAdjacentHTML('beforeend', '<svg class="loader-wheel" viewBox="-52 -28 104 66">' + layers + disc(0) + '</svg>');
+        // the tiles, column by column (Meta, Macro, Civilisational), each
+        // column top to bottom, with a short pause between columns
+        var TILE = 24, GAP = 6, STEP = 130, PAUSE = 140, DUR = 520, MAX_WAIT = 7000;
+        var COLS = [0, 2, 1];   // grid columns in the order they arrive
+        var rects = '', k = 0, last = 0;
+        COLS.forEach(function (col, c) {
+          for (var row = 0; row < 3; row++, k++) {
+            var delay = k * STEP + c * PAUSE;
+            last = delay;
+            rects += '<rect' + (col === 1 ? ' class="core"' : '') + ' x="' + col * (TILE + GAP) + '" y="' + row * (TILE + GAP) +
+              '" width="' + TILE + '" height="' + TILE + '" rx="3" style="--delay:' + delay + 'ms;--dur:' + DUR + 'ms;--turn:' + (col * 90 + row * 40) +
+              'ms;--wave:' + (col * 180 + row * 60) + 'ms"/>';
+          }
+        });
+        loader.insertAdjacentHTML('beforeend', '<svg class="loader-grid" viewBox="0 0 84 84">' + rects + '</svg>');
         loader.classList.add('loader-stacking');
-        var built = (LEVELS - 1) * STEP + DUR + 120;
+        var grid = loader.querySelector('.loader-grid');
+        var built = last + DUR + 120;
         var t0 = performance.now();
-        // a soft note as each quadrant arrives, rising a step each time (the
+        // a soft note as each column completes, rising a step each time (the
         // browser may hold sound back until the page has been interacted with)
         var layerCtx = null;
         function layerSound(i) {
@@ -1990,7 +1972,7 @@
             }
             if (layerCtx.state === 'suspended') layerCtx.resume();
             var when = layerCtx.currentTime;
-            var freq = [130.81, 164.81, 196.00, 261.63][i % 4];   // C3 E3 G3 C4
+            var freq = [130.81, 164.81, 196.00][i % 3];   // C3 E3 G3
             [[freq, 0.05, 0.7], [freq * 2, 0.012, 0.35]].forEach(function (partial) {
               var osc = layerCtx.createOscillator();
               osc.type = 'sine';
@@ -2005,15 +1987,17 @@
             });
           } catch (e) {}
         }
-        for (var n = 0; n < LEVELS; n++) {
-          setTimeout(layerSound.bind(null, n), n * STEP + DUR * 0.55);
+        for (var n = 0; n < 3; n++) {
+          setTimeout(layerSound.bind(null, n), (n * 3 + 2) * STEP + n * PAUSE + DUR * 0.55);
         }
-        // turn the accent the moment the last quadrant arrives (the ease-out
-        // has it settled well before its animation formally ends)
+        // turn the accent the moment the last tile lands (the ease-out has it
+        // settled well before its animation formally ends)
         setTimeout(function () {
           window.loaderBlueAt = performance.now();
           loader.classList.add('loader-complete');
-        }, (LEVELS - 1) * STEP + DUR * 0.55);
+        }, last + DUR * 0.55);
+        // built but the page not ready yet: the waiting wave
+        setTimeout(function () { if (!ready) grid.classList.add('loader-waiting'); }, built);
         (function wait() {
           var elapsed = performance.now() - t0;
           if (elapsed >= built && (ready || elapsed >= MAX_WAIT)) finishLoader();
@@ -2786,10 +2770,10 @@
 
       function setFavicons(isDark) {
         var suffix = isDark ? 'dark' : 'light';
-        document.getElementById('favicon-ico').href = 'favicon/favicon-' + suffix + '.ico';
-        document.getElementById('favicon-32').href = 'favicon/favicon-32-' + suffix + '.png';
-        document.getElementById('favicon-192').href = 'favicon/favicon-192-' + suffix + '.png';
-        document.getElementById('favicon-apple').href = 'favicon/apple-touch-icon-' + suffix + '.png';
+        document.getElementById('favicon-ico').href = 'favicon/favicon-' + suffix + '.ico?v=p';
+        document.getElementById('favicon-32').href = 'favicon/favicon-32-' + suffix + '.png?v=p';
+        document.getElementById('favicon-192').href = 'favicon/favicon-192-' + suffix + '.png?v=p';
+        document.getElementById('favicon-apple').href = 'favicon/apple-touch-icon-' + suffix + '.png?v=p';
       }
 
       function currentTheme() {
@@ -3139,6 +3123,6 @@
       });
     })();
   </script>
-  <script src="assets/tools.js?v=6b227cc7" data-search-scope=".article-body, .endnotes" data-search-exclude="#overview" data-hide-until="#overview"></script>
+  <script src="assets/tools.js?v=8fc955b8" data-search-scope=".article-body, .endnotes" data-search-exclude="#overview" data-hide-until="#overview"></script>
 </body>
 </html>

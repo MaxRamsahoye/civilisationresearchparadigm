@@ -400,7 +400,10 @@
 // deep green and easing back to bright green; a click adds another (three times
 // at most), and any other movement, key or scroll ends it. Not for those
 // who prefer less motion. (On every page of the site.)
+// Deactivated: set SCREENSAVER to true to turn it back on.
+var SCREENSAVER = false;
 (function () {
+  if (!SCREENSAVER) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var css = [
     '.ce-saver { position: fixed; inset: 0; z-index: 1000; overflow: hidden; background: var(--canvas-bg, #fff);',
