@@ -68,12 +68,12 @@ const CSS = `
   /* the sections in the site's band (the Overview, Structure and Contents)
      together on a page of their own in its midnight green, edge to edge,
      their text centred on the page */
-  @page band { margin: 0; background: #0a2d1b; @bottom-left { content: none; } @bottom-right { content: none; } }
+  @page band { margin: 0; background: #274d38; @bottom-left { content: none; } @bottom-right { content: none; } }
   .band-page {
     page: band; break-before: page; break-inside: avoid;
     box-sizing: border-box; min-height: 296.5mm; margin: 0 -24mm; padding: 24mm;
     display: flex; flex-direction: column; justify-content: center;
-    background: #0a2d1b; color: #fbf6ec;
+    background: #274d38; color: #fbf6ec;
   }
   .band-page a { color: inherit; text-decoration: underline; text-underline-offset: 2pt; }
   /* a little smaller than the article's text, so that the Overview keeps to its page */
@@ -84,7 +84,7 @@ const CSS = `
   .band-page section > :last-child { margin-bottom: 0; }
   /* the darker band of the site (Structure): edge to edge across its page, in
      the darker shade of the midnight green */
-  .band-page section.band-alt { margin: 0 -24mm; padding: 16mm 24mm; background: #092617; }
+  .band-page section.band-alt { margin: 0 -24mm; padding: 16mm 24mm; background: #1f3e2d; }
   /* first on its page, it runs up to the top edge: the top of the page, not
      a band across it, and what follows sits below it rather than centred */
   .band-page:has(> section.band-alt:first-child) { justify-content: flex-start; }

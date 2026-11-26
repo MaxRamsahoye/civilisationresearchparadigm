@@ -81,8 +81,8 @@ html[data-theme="dark"] {
   --canvas-ink: #ffffff;
   --muted: #8c8c8c;
   --track-tint: rgba(255, 255, 255, 0.15);
-  --band-bg: #0a2d1b;
-  --inverse-bg: #0a2d1b;
+  --band-bg: #274d38;
+  --inverse-bg: #274d38;
   --inverse-ink: #fbf6ec;
   --selection-bg: rgba(148, 218, 183, 0.35);
 }
@@ -496,9 +496,9 @@ html.band-green:not([data-theme]) {
   /* with the green band, links and highlights are green site-wide */
   --link-blue: #167e49;
   --selection-bg: rgba(73, 190, 137, 0.3);
-  --inverse-bg: #0a2d1b;
+  --inverse-bg: #274d38;
   --inverse-ink: #fbf6ec;
-  --band-bg: #0a2d1b;
+  --band-bg: #274d38;
 }
 
 html.band-midnight:not([data-theme]) {
