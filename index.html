@@ -1380,7 +1380,8 @@
       position: relative;
       z-index: 0;
       margin: 0;
-      padding: 0 0 104px;
+      /* (tight: the bands after the Overview hold short sections) */
+      padding: 0 0 56px;
     }
 
     .article-body #overview + section.in-band {
@@ -1392,7 +1393,7 @@
     }
 
     .article-body section.in-band:not(:has(+ section.in-band)) {
-      padding-bottom: 128px;
+      padding-bottom: 52px;
     }
 
     .article-body section.in-band + section:not(.in-band) {
@@ -1421,11 +1422,11 @@
 
     :is(#overview, .in-band).band-alt {
       --canvas-bg: var(--inverse-bg-alt);
-      padding-top: 96px;
+      padding-top: 56px;
     }
 
     .article-body section.band-alt + section.in-band {
-      padding-top: 96px;
+      padding-top: 56px;
     }
 
     html.overview-lines :is(#overview, .in-band).band-alt {
