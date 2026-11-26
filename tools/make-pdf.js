@@ -24,17 +24,19 @@ const CSS = `
   @font-face { font-family: 'ET Bembo'; src: url('fonts/ETBembo-DisplayItalic.woff2') format('woff2'); font-weight: 400; font-style: italic; }
   /* the site's name and page numbers in the page margins, in IBM Plex as
      on the site; on the first page its name in the top right corner too */
+  /* (no side margins, so that the rules can run edge to edge: the text is
+     set in by the body's own padding instead, and the margin type by its) */
   @page {
     size: A4;
-    margin: 24mm 24mm 22mm;
-    @bottom-left { content: 'civilisationalparadigm'; font-family: 'IBM Plex Sans', sans-serif; font-size: 8pt; color: #167e49; vertical-align: middle; }
-    @bottom-right { content: counter(page); font-family: 'IBM Plex Sans', sans-serif; font-size: 8pt; color: #777; vertical-align: middle; }
+    margin: 24mm 0 22mm;
+    @bottom-left { content: 'civilisationalparadigm'; padding-left: 24mm; font-family: 'IBM Plex Sans', sans-serif; font-size: 8pt; color: #167e49; vertical-align: middle; }
+    @bottom-right { content: counter(page); padding-right: 24mm; font-family: 'IBM Plex Sans', sans-serif; font-size: 8pt; color: #777; vertical-align: middle; }
   }
   @page :first {
-    @top-right { content: 'Civilisational\\A Paradigm'; white-space: pre; font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 10pt; line-height: 1.15; letter-spacing: 0.06em; text-transform: uppercase; text-align: right; vertical-align: bottom; padding-bottom: 2mm; color: #000; }
+    @top-right { content: 'Civilisational\\A Paradigm'; white-space: pre; font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 10pt; line-height: 1.15; letter-spacing: 0.06em; text-transform: uppercase; text-align: right; vertical-align: bottom; padding-bottom: 2mm; padding-right: 24mm; color: #000; }
   }
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body { margin: 0; font-family: 'ET Bembo', Georgia, serif; font-size: 13.5pt; line-height: 1.42; color: #000; }
+  body { margin: 0; padding: 0 24mm; font-family: 'ET Bembo', Georgia, serif; font-size: 13.5pt; line-height: 1.42; color: #000; }
   a { color: #167e49; text-decoration: none; }
   .amp { font-style: normal; }
   /* the title on a page of its own, a little below the middle */
@@ -48,10 +50,9 @@ const CSS = `
   h1 .title-line { display: block; white-space: nowrap; }
   .subtitle { margin: 0; font-weight: 600; font-size: 14.5pt; line-height: 1.3; }
   section { margin: 0 0 8pt; }
-  /* the rule above Meta and Macro: in the link green, across the text (the
-     page's margins cannot be drawn into) */
+  /* the rule above Meta and Macro: in the link green, edge to edge */
   section.divided { position: relative; margin-top: 22pt; padding-top: 22pt; }
-  section.divided::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1.5pt; background: #167e49; }
+  section.divided::before { content: ''; position: absolute; top: 0; left: -24mm; right: -24mm; height: 1.5pt; background: #167e49; }
   section.divided > h2:first-child { margin-top: 0; }
   h2 { margin: 28pt 0 9pt; font-size: 20pt; font-weight: 600; line-height: 1.2; break-after: avoid; }
   /* the top-level headings (Civilisational, Meta, Macro) in ET Bembo's true italic */
@@ -59,13 +60,13 @@ const CSS = `
   h3 { margin: 20pt 0 7pt; font-size: 15.5pt; font-weight: 600; font-style: normal; break-after: avoid; }
   h4, h5 { margin: 16pt 0 5pt; font-size: 13.5pt; font-weight: 600; break-after: avoid; }
   p { margin: 0 0 9pt; orphans: 3; widows: 3; }
-  /* the sections in the site's band (the Overview, then Basis and Contents
-     together) on pages of their own in its midnight green, edge to edge,
+  /* the sections in the site's band (the Overview, Structure and Contents)
+     together on a page of their own in its midnight green, edge to edge,
      their text centred on the page */
   @page band { margin: 0; background: #0a2d1b; @bottom-left { content: none; } @bottom-right { content: none; } }
   .band-page {
     page: band; break-before: page; break-inside: avoid;
-    box-sizing: border-box; min-height: 296.5mm; padding: 24mm;
+    box-sizing: border-box; min-height: 296.5mm; margin: 0 -24mm; padding: 24mm;
     display: flex; flex-direction: column; justify-content: center;
     background: #0a2d1b; color: #fbf6ec;
   }
@@ -76,7 +77,7 @@ const CSS = `
   .band-page section + section { margin-top: 26pt; }
   .band-page h2 { margin-top: 0; }
   .band-page section > :last-child { margin-bottom: 0; }
-  /* the darker band of the site (Basis): edge to edge across its page, in
+  /* the darker band of the site (Structure): edge to edge across its page, in
      the darker shade of the midnight green */
   .band-page section.band-alt { margin: 0 -24mm; padding: 16mm 24mm; background: #092617; }
   /* first on its page, it runs up to the top edge: the top of the page, not
@@ -94,6 +95,9 @@ const CSS = `
   .live-sub { margin: 4pt 0 0; }
   .live-sub li::before { content: '\\25CB\\00a0\\00a0'; font-size: 0.75em; vertical-align: 0.1em; }
   #contents .live-list:not(.live-sub) { font-family: 'IBM Plex Sans', sans-serif; font-size: 10.5pt; }
+  /* the Contents in three columns, a group to each, as on the site */
+  #contents .live-list:not(.live-sub) { columns: 3; column-gap: 8mm; }
+  #contents .live-list:not(.live-sub) > li { break-inside: avoid; }
   #contents .live-sub { font-size: 9pt; }
   hr { border: 0; border-top: 0.75pt solid #999; margin: 16pt 0; }
 `;
@@ -122,8 +126,8 @@ const CSS = `
       title: title.innerHTML,
       titleText: q('.article-title').textContent.replace(/\s+/g, ' ').trim(),
       subtitle: q('.article-subtitle').innerHTML,
-      // the Overview on one page, the sections after it in the band on another
-      bandPages: n ? [html(sections.slice(0, 1))].concat(n > 1 ? [html(sections.slice(1, n))] : []) : [],
+      // the Overview and the sections after it in the band, on one page
+      bandPages: n ? [html(sections.slice(0, n))] : [],
       rest: html(sections.slice(n)),
     };
   });
