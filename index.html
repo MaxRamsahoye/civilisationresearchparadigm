@@ -240,6 +240,35 @@
       font-size: 1.25em;
     }
 
+    /* headings within a frame: a small IBM Plex label (h4), and below it
+       ET Bembo italic (h5) */
+    .article-body h4 {
+      margin: 48px 0 14px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.62em;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    .article-body h5 {
+      margin: 30px 0 8px;
+      font-family: var(--serif);
+      font-size: 1em;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.3;
+    }
+
+    .article-body :is(h4, h5)[id] {
+      scroll-margin-top: 72px;
+    }
+
+    .article-body h4 + h5 {
+      margin-top: 18px;
+    }
+
     /* the top-level headings (Civilisational, Meta, Macro: the doc's h1s)
        in italic; ET Bembo has no bold italic, so its true italic takes on
        weight from a hairline stroke rather than a faked bold */
@@ -1180,6 +1209,11 @@
       text-decoration: underline;
       text-decoration-thickness: 1px;
       text-underline-offset: 3px;
+    }
+
+    /* a link in a bold lead-in keeps the bold */
+    .article-body p strong a {
+      font-weight: 700;
     }
 
     /* ET Bembo has no bold italic, and browsers fake one (iOS Safari
@@ -2556,6 +2590,12 @@
 
               <p>Civilisational Mechanics derives its name from a subfield of physics, inspired by the original conception of sociology as &lsquo;social physics&rsquo; (Comte). Just as <a href="https://www.ebsco.com/research-starters/astronomy-and-astrophysics/celestial-mechanics" target="_blank" rel="noopener">celestial mechanics</a> (Laplace) seeks to model the motions and interactions of astronomical objects (planets, stars, galaxies) in space, civilisational mechanics seeks to model the initial conditions, organisational principles and developmental process of large-scale societal structures.<a class="sidenote-ref" id="ref-1" href="#note-1" aria-label="Note 1"></a><span class="sidenote" id="note-1" role="note"><a class="sidenote-label" href="#ref-1" aria-label="Back to note 1 in the text"></a>Parallel framing: world-system dynamics &ndash; combining the term world-system (Wallerstein) and system dynamics. Civilisational dynamics is a term employed by the <a href="https://www.ucl.ac.uk/arts-humanities/classics/research/research-projects/centre-research-dynamics-civilisation" target="_blank" rel="noopener">Centre for Research into the Dynamics of Civilisation</a> (UCL) and the <a href="https://acsresearch.org/" target="_blank" rel="noopener">Alignment of Complex Systems Research Group</a>, the latter with a focus on <a href="https://princint.ai/programs/fellowship/#:~:text=Post%2DAGI%20Civilisation%20Dynamics" target="_blank" rel="noopener">post-AGI</a>.</span> The objective is to clarify how &lsquo;civilisation&rsquo; functions and, more importantly, dysfunctions across history &ndash; particularly in technological modernity with the novel production of existential risk.<a class="sidenote-ref" id="ref-2" href="#note-2" aria-label="Note 2"></a><span class="sidenote" id="note-2" role="note"><a class="sidenote-label" href="#ref-2" aria-label="Back to note 2 in the text"></a>Meta-theory link: within critical realism, &lsquo;generative mechanisms&rsquo; are underlying causal processes that produce observable patterns.</span> Plainly put, it is about forming a foundational understanding of how civilisation works, how it is constructed, changes and collapses.</p>
 
+              <h4 id="theory-of-historical-development"><a class="heading-link" href="#theory-of-historical-development">Theory of Historical Development</a></h4>
+
+              <p><strong><a href="https://www.allandafoe.com/technologicaldeterminism" target="_blank" rel="noopener">Military-Economic Adaptationism</a>:</strong> as a multi-agent system in a semi-anarchic default condition absent an absolute authority to assure security &ndash; civilisation is characterised by competitive pressures for political units that are &lsquo;militarily powerful and economically productive&rsquo;. In the process of continually securing their self-preservation, collective agents evolve to become adapted to advancing technology which is instrumental to amplifying military capabilities and economic growth; as a form of default differential technological development. Political units that fail to maximise destructive and extractive capabilities are assimilated or eliminated by those that do. This adaptationist pressure has produced a dynamic equilibrium: each cycle of geopolitical competition drives the upregulation of capabilities, which in turn raises the threshold of survival for all competing units. This process of military-economic adaptationism extends the power of technological instruments and their area of effect to a civilisation-terminating scale (nuclear, bio and AI weapons of mass destruction).</p>
+
+              <p><strong>Cultural-Psychological Adaptationism:</strong> co-evolutionary with military, economic and technological infrastructures are cultural superstructures (epistemologies ontologies and axiologies): system-justifying belief-systems that are functional, efficient and aligned for the operation of states and corporations as the vehicles of military-economic adaptation and techno-capital acceleration. Subjected to these higher-order selection processes, populations are internally socially engineered for dominant ideologies (nationalism, neoliberalism, accelerationism, theocracy etc) and dark tetrad personality traits (narcissism, Machiavellianism, psychopathy, and sadism): a cultural psychology that operationalises and advances the imperatives of the political economy and collective agents humans are integrated into. Memetic complexes function as symbiotic replicators with institutional vehicles: their combined fitness is decoupled from its correspondence to reality or its contribution to the survival of human hosts.</p>
+
               <h3 id="civilisation-design"><a class="heading-link" href="#civilisation-design">Civilisation Design</a></h3>
 
               <p>Civilisation design aims to delineate the criteria and constraints of a viable world-system and then to develop specifications for prototype systems that can scale to fulfil this criteria.</p>
@@ -2563,6 +2603,20 @@
               <p>In the design space of civilisations, what currently exists is just one possibility among many. If we are to survive this century and flourish throughout those that come after, we will need to explore what alternatives are available to us. Through this process, if we are lucky and diligent we may just happen upon a &lsquo;civilisation that would stand the test of time&rsquo;. I call this search in the civilisational design space, <a href="https://docs.google.com/document/d/1gxlWxFp0KfiR2oaWTwrxZFJE8nx79hXXGL-ylK1-93w/edit?usp=sharing" target="_blank" rel="noopener">the search for Civilisation X</a>.</p>
 
               <p>Importantly, civilisation design is not equivalent to the intelligent design of God, the central planning of an economist or the social engineering of a state: it also involves the design of evolutionary and emergent processes that themselves include distributed intelligent designers with their own agency that elaborate on the initial design (see <a href="https://docs.google.com/document/d/1-3ME4XUxsQbZIWbXEEvByE3i4gBveKJiTj4_Sa1BAno/edit?usp=sharing" target="_blank" rel="noopener">Universal Dynamics: Emergentism &amp; Cyberneticism</a>).</p>
+
+              <h4 id="third-attractor"><a class="heading-link" href="#third-attractor">The Third Attractor</a></h4>
+
+              <p>Schmachtenberger has proposed that civilisation is gravitating towards two &lsquo;attractors&rsquo;: catastrophe and dystopia, or as I alliteratively refer to them decentralised destruction and centralised control. Currently, we are in a hybrid condition where both these states are present in nascent forms, for instance, ongoing military conflict (Russia-Ukraine, US-Iran etc), and superpower fascism (China, US). Schmachtenberger&rsquo;s thesis is that the first two attractors &ndash; catastrophe and dystopia &ndash; must be avoided through the conscious design and transition to a third attractor &ndash; what I refer to as autopoetic alignment.</p>
+
+              <h5 id="decentralised-destruction"><a class="heading-link" href="#decentralised-destruction">The First Attractor: Decentralised Destruction</a></h5>
+
+              <p>The current world-systems decentralisation of power (multi-polarity or international anarchy) creates the preconditions for the arms race towards artificial superintelligence, the tragedy of the commons with the biosphere and a vulnerability towards unilateral actors. Competition and conflict between states escalates now with autonomous militaries. Compounding economic growth running on a linear materials economy generates extreme ecological externalities; which in turn exacerbates political stability, mass migration and resource wars. Absent a global technical governance regime, continued technological development in AI, drones and biotech results in the uncontrolled distribution of powerful capabilities across the population, including malevolent, rogue actors that use it to cause harm at a mass-scale. Without a centralised authority capable of constraining and coordinating actors, monitoring and enforcing regulations, and leveraging a monopoly of violence, civilisation experiences a critical governance failure over geopolitics, market economics, emerging technologies and the environmental substrate upon which it depends. Technologically advanced human civilization collapses or self-terminates from a combination of slow industrial ecocide, world war III and out-of-control AI.</p>
+
+              <h5 id="centralised-control"><a class="heading-link" href="#centralised-control">The Second Attractor: Centralised Control</a></h5>
+
+              <p>As a counter-reaction to the catastrophic risks posed by the AI arms race and climate destabilisation, nation-states integrate their policy and surveillance apparatuses into a political structure resembling a world-government in function. To stop anyone unsafely deploying recursively self-improving AI, an international body is created between the superpowers to monitor AI R&amp;D by organisations and increasingly by individuals, as the threshold for accessing powerful open-source models lowers. The need for transparency translates to total surveillance of all digital activity and, further, of all physical spaces capable of hosting covert data centres or biolabs (tabletop CRISPR). Whilst intended to serve a protective purpose, this new system, augmented and automated by AI, becomes an unprecedented political technology for concentrating power and constraining the agency of everyone subject to it. After a few warning shots &ndash; catastrophes from AI and bio at the national and international scales &ndash; this system quickly consolidates (despotic drift) into a form of global stable totalitarianism and permanently closed society.</p>
+
+              <h5 id="autopoetic-alignment"><a class="heading-link" href="#autopoetic-alignment">The Third Attractor: Autopoetic Alignment</a></h5>
 
               <h3 id="civilisational-transition"><a class="heading-link" href="#civilisational-transition">Civilisational Transition</a></h3>
 

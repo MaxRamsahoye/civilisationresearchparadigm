@@ -59,6 +59,11 @@ const CSS = `
   body > section > h2 { font-style: italic; font-weight: 400; font-synthesis: none; -webkit-text-stroke: 0.45pt currentColor; }
   h3 { margin: 20pt 0 7pt; font-size: 15.5pt; font-weight: 600; font-style: normal; break-after: avoid; }
   h4, h5 { margin: 16pt 0 5pt; font-size: 13.5pt; font-weight: 600; break-after: avoid; }
+  /* within a frame, as on the site: a small IBM Plex label, then italic */
+  h4 { margin: 18pt 0 7pt; font-family: 'IBM Plex Sans', sans-serif; font-size: 8.5pt; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+  h5 { margin: 14pt 0 4pt; font-size: 13.5pt; font-weight: 400; font-style: italic; }
+  h4 + h5 { margin-top: 8pt; }
+  strong, strong a { font-weight: 700; }
   p { margin: 0 0 9pt; orphans: 3; widows: 3; }
   /* the sections in the site's band (the Overview, Structure and Contents)
      together on a page of their own in its midnight green, edge to edge,
