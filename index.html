@@ -186,22 +186,30 @@
       --rule: #133e26;
       --muted: #8c8c8c;
       --link-blue: #8dd9aa;
-      /* the midnight green, as with the white theme's default band */
-      --inverse-bg: #274d38;
-      --inverse-ink: #fbf6ec;
-      --inverse-link: #8dd9aa;
+      /* the green band, as with the white theme's default band: a mid
+         green with black text */
+      --inverse-bg: #65b187;
+      --inverse-bg-alt: #55a278;
+      --inverse-ink: #000000;
+      --inverse-link: #000000;
     }
 
-    /* b (white theme only) cycles the Overview and footer: midnight green
+    /* b (white theme only) cycles the Overview and footer: green
        (the default), light sepia (above), midnight blue, black */
     html.band-green:not([data-theme]) {
       /* links and highlights green, rather than blue */
       --link-blue: #167e49;
       --selection-bg: rgba(73, 190, 137, 0.3);
       --note-highlight: #d9efe4;
-      --inverse-bg: #274d38;
-      --inverse-ink: #fbf6ec;
-      --inverse-link: #8dd9aa;
+      /* a mid green band with black text (8.2:1), its darker shade 6.8:1 */
+      --inverse-bg: #65b187;
+      --inverse-ink: #000000;
+      --inverse-link: #000000;
+    }
+
+    html.band-green:not([data-theme]),
+    html[data-theme="dark"] {
+      --inverse-bg-alt: #55a278;
     }
 
     html.band-midnight:not([data-theme]) {
