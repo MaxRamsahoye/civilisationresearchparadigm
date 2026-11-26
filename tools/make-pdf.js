@@ -48,7 +48,10 @@ const CSS = `
   h1 .title-line { display: block; white-space: nowrap; }
   .subtitle { margin: 0; font-weight: 600; font-size: 14.5pt; line-height: 1.3; }
   section { margin: 0 0 8pt; }
-  section.divided { margin-top: 22pt; padding-top: 22pt; border-top: 1.5pt solid #000; }
+  /* the rule above Meta and Macro: in the link green, across the text (the
+     page's margins cannot be drawn into) */
+  section.divided { position: relative; margin-top: 22pt; padding-top: 22pt; }
+  section.divided::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1.5pt; background: #167e49; }
   section.divided > h2:first-child { margin-top: 0; }
   h2 { margin: 28pt 0 9pt; font-size: 20pt; font-weight: 600; line-height: 1.2; break-after: avoid; }
   h3 { margin: 20pt 0 7pt; font-size: 15.5pt; font-weight: 600; font-style: normal; break-after: avoid; }

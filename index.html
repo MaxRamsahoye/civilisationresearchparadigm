@@ -1088,11 +1088,23 @@
     }
 
     /* a 2px rule between the clusters of sections (above Meta and Macro),
-       with the same space above and below it */
+       with the same space above and below it: in the link accent, the
+       full width of the window (the text column is centred in it) */
     .article-body section.divided {
+      position: relative;
       margin-top: 72px;
       padding-top: 72px;
-      border-top: 2px solid var(--canvas-ink);
+    }
+
+    .article-body section.divided::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 100vw;
+      height: 2px;
+      transform: translateX(-50%);
+      background: var(--link-blue);
     }
 
     /* headings link to themselves; menu and heading links land with room above */
