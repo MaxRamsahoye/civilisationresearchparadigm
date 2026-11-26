@@ -240,6 +240,19 @@
       font-size: 1.25em;
     }
 
+    /* the top-level headings (Civilisational, Meta, Macro: the doc's h1s)
+       in italic; ET Bembo has no bold italic, so its true italic takes on
+       weight from a hairline stroke rather than a faked bold */
+    .article-body > section:not(#overview):not(.in-band) > h2 {
+      font-style: italic;
+    }
+
+    html.serif-headings .article-body > section:not(#overview):not(.in-band) > h2 {
+      font-weight: 400;
+      font-synthesis: none;
+      -webkit-text-stroke: 0.7px currentColor;
+    }
+
     html.serif-headings .article-body h3 {
       font-weight: 400;
       font-size: 1.2em;

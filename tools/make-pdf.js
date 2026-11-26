@@ -54,6 +54,8 @@ const CSS = `
   section.divided::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1.5pt; background: #167e49; }
   section.divided > h2:first-child { margin-top: 0; }
   h2 { margin: 28pt 0 9pt; font-size: 20pt; font-weight: 600; line-height: 1.2; break-after: avoid; }
+  /* the top-level headings (Civilisational, Meta, Macro) in ET Bembo's true italic */
+  body > section > h2 { font-style: italic; font-weight: 400; font-synthesis: none; -webkit-text-stroke: 0.45pt currentColor; }
   h3 { margin: 20pt 0 7pt; font-size: 15.5pt; font-weight: 600; font-style: normal; break-after: avoid; }
   h4, h5 { margin: 16pt 0 5pt; font-size: 13.5pt; font-weight: 600; break-after: avoid; }
   p { margin: 0 0 9pt; orphans: 3; widows: 3; }
