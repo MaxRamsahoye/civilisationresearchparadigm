@@ -1309,20 +1309,18 @@
     /* a 2px rule between the clusters of sections (above Meta and Macro),
        with the same space above and below it: in the link accent, the
        full width of the window (the text column is centred in it) */
+    /* (drawn as a block at the head of the section, not positioned, so
+       that the section is not the frame its sidenotes are placed in) */
     .article-body section.divided {
-      position: relative;
       margin-top: 72px;
-      padding-top: 72px;
     }
 
     .article-body section.divided::before {
       content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
+      display: block;
       width: 100vw;
       height: 2px;
-      transform: translateX(-50%);
+      margin: 0 0 72px calc(50% - 50vw);
       background: var(--link-blue);
     }
 
@@ -2883,7 +2881,7 @@
                 <li><strong>Goliath&rsquo;s Curse (Kemp):</strong> Luke Kemp&rsquo;s history of collapse (2025). When the darker angels of human nature &ndash; status competition, the corruption of power, the dark triad &ndash; met the conditions of the Holocene, such as lootable resources, dominance hierarchies or &lsquo;Goliaths&rsquo; emerged and were selected for. Caught in &lsquo;Goliath traps&rsquo; &ndash; arms races, races to the bottom and status races &ndash; they have repeatedly risen and collapsed, and today those traps have branched out into all the contributors to global catastrophic risk.</li>
                 <li><strong>Collapsology (Servigne, Stevens):</strong> from Pablo Servigne and Rapha&euml;l Stevens&rsquo;s <em>How Everything Can Collapse</em> (2015): the transdisciplinary study of the collapse of industrial civilisation, which treats collapse not as a remote possibility but as a likely trajectory, and asks how to live and prepare in its light.
                   <ul class="dash-list live-sub">
-                    <li><strong>Critical Collapsology (Hames, Vetch):</strong> a conceptual engineering by <a href="https://thenewcentre.org/archive/critical-collapsology-theory-and-the-ends-of-worlds/" target="_blank" rel="noopener">Richard Hames and Beau-Caprice Vetch</a>, which finds traditional collapsology wanting: it lacks a political account of collapse, a theory of why societies cohere and an analysis of capitalism, which thrives on crisis &ndash; and it neglects &lsquo;applied collapsology&rsquo;, the deliberate destruction of societies through colonisation, war and genocide that underpins the modern world. Collapse is already political: its anticipation drives militarisation, border fortification and authoritarianism, and its fear can be weaponised to justify violence. Critical collapsology treats collapse not as an external accident or technical failure, but as inseparable from the logics of imperial modernity itself (see <a href="https://jembendell.com/2025/08/28/critical-collapsology-the-future-of-the-left-info-ahead-of-the-metacrisis-meeting/" target="_blank" rel="noopener">Jem Bendell&rsquo;s summary</a>).</li>
+                    <li><strong>Critical Collapsology (Hames, Vetch):</strong> a conceptual engineering by <a href="https://thenewcentre.org/archive/critical-collapsology-theory-and-the-ends-of-worlds/" target="_blank" rel="noopener">Richard Hames and Beau-Caprice Vetch</a>, which finds traditional collapsology wanting: it lacks a political account of collapse, a theory of why societies cohere and an analysis of capitalism, which thrives on crisis &ndash; and it neglects &lsquo;applied collapsology&rsquo;, the deliberate destruction of societies through colonisation, war and genocide that underpins the modern world. Critical collapsology treats collapse not as an external accident or technical failure, but as inseparable from the logics of imperial modernity itself (see <a href="https://jembendell.com/2025/08/28/critical-collapsology-the-future-of-the-left-info-ahead-of-the-metacrisis-meeting/" target="_blank" rel="noopener">Jem Bendell&rsquo;s summary</a>).<a class="sidenote-ref" id="ref-4" href="#note-4" aria-label="Note 4"></a><span class="sidenote" id="note-4" role="note"><a class="sidenote-label" href="#ref-4" aria-label="Back to note 4 in the text"></a>Collapse is also a political phenomenon. A &lsquo;politics of collapse&rsquo; is already with us: its anticipation shapes geopolitics through militarisation, border fortification and authoritarian responses, and its fear can be weaponised to justify violence.</span></li>
                   </ul>
                 </li>
               </ul>
