@@ -242,6 +242,32 @@
       font-size: 1.25em;
     }
 
+    /* numbered definitions (I, II): the numeral in the left margin, level
+       with the first line; on narrow screens, at the start of the line */
+    .article-body p.definition {
+      position: relative;
+    }
+
+    .article-body p.definition::before {
+      content: attr(data-num);
+      position: absolute;
+      top: 0.35em;
+      right: calc(100% + 18px);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.62em;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--mint);
+    }
+
+    @media (max-width: 700px) {
+      .article-body p.definition::before {
+        position: static;
+        margin-right: 0.6em;
+        vertical-align: 0.15em;
+      }
+    }
+
     /* quotations set in, with a rule down the left (as on MoMU) */
     .article-body blockquote {
       max-width: 760px;
@@ -2676,9 +2702,9 @@
 
               <h3 id="metacrisis"><a class="heading-link" href="#metacrisis">Metacrisis</a></h3>
 
-              <p><a href="https://maxramsahoye.github.io/civilisationtheory/#metacrisis" target="_blank" rel="noopener">The Metacrisis</a> is (a conceptual frame for capturing) civilisation&rsquo;s total <a href="https://maxramsahoye.github.io/civilisationtheory/#problem-complex" target="_blank" rel="noopener">problem complex</a>, the <a href="https://maxramsahoye.github.io/civilisationtheory/#generative-dynamics" target="_blank" rel="noopener">generative dynamics</a> that (re)produce it and the <a href="https://maxramsahoye.github.io/civilisationtheory/#attractor-states" target="_blank" rel="noopener">attractor states</a> it vectors towards. It marks the terminal phase in the developmental process of the current <a href="https://globalmaximum.substack.com/p/the-life-world-system-on-the-universal" target="_blank" rel="noopener">life-world-system</a>, which is now emergently posing an existential risk to humanity. It is a historical period in which the future of civilisation will be determined: exhibiting concurrent tendencies of collapse and catastrophe, dystopia and suffering, protopia and flourishing. The metacrisis results from a <a href="https://maxramsahoye.github.io/civilisationtheory/#scarcity-rivalry-orientation" target="_blank" rel="noopener">fundamental orientation</a> (separate, rivalrous, instrumentalising) operationalised in dominant institutional structures (nation-states, market-capitalism, corporations) and enacted in the dominant <a href="https://www.civilizationresearchinstitute.org/research/reality-check/#:~:text=motivated%20by%20power.-,Nature%20of%20Mind%20and%20Moloch,-The%20nature%20of" target="_blank" rel="noopener">second nature of minds</a> (self-preservation, resource-acquisition, power-seeking).</p>
+              <p class="definition" data-num="I"><a href="https://maxramsahoye.github.io/civilisationtheory/#metacrisis" target="_blank" rel="noopener">The Metacrisis</a> is (a conceptual frame for capturing) civilisation&rsquo;s total <a href="https://maxramsahoye.github.io/civilisationtheory/#problem-complex" target="_blank" rel="noopener">problem complex</a>, the <a href="https://maxramsahoye.github.io/civilisationtheory/#generative-dynamics" target="_blank" rel="noopener">generative dynamics</a> that (re)produce it and the <a href="https://maxramsahoye.github.io/civilisationtheory/#attractor-states" target="_blank" rel="noopener">attractor states</a> it vectors towards. It marks the terminal phase in the developmental process of the current <a href="https://globalmaximum.substack.com/p/the-life-world-system-on-the-universal" target="_blank" rel="noopener">life-world-system</a>, which is now emergently posing an existential risk to humanity. It is a historical period in which the future of civilisation will be determined: exhibiting concurrent tendencies of collapse and catastrophe, dystopia and suffering, protopia and flourishing. The metacrisis results from a <a href="https://maxramsahoye.github.io/civilisationtheory/#scarcity-rivalry-orientation" target="_blank" rel="noopener">fundamental orientation</a> (separate, rivalrous, instrumentalising) operationalised in dominant institutional structures (nation-states, market-capitalism, corporations) and enacted in the dominant <a href="https://www.civilizationresearchinstitute.org/research/reality-check/#:~:text=motivated%20by%20power.-,Nature%20of%20Mind%20and%20Moloch,-The%20nature%20of" target="_blank" rel="noopener">second nature of minds</a> (self-preservation, resource-acquisition, power-seeking).</p>
 
-              <p>&lsquo;The Metacrisis&rsquo; is (a conceptual frame for capturing) the problems of civilisation considered in totality, the underlying dynamics that give rise to them and the narrow set of future trajectories ahead. The causal thesis of the metacrisis is that global crises and catastrophic risks emerge from the prevailing civilisational paradigm: the interaction of its operational evolutionary game-theory, political economy and cultural psychology with advanced technology. Whilst the metacrisis has existed in proto-form throughout history, it is expressed most acutely in our current era of late-stage modernity where it has become existential.</p>
+              <p class="definition" data-num="II">&lsquo;The Metacrisis&rsquo; is (a conceptual frame for capturing) the problems of civilisation considered in totality, the underlying dynamics that give rise to them and the narrow set of future trajectories ahead. The causal thesis of the metacrisis is that global crises and catastrophic risks emerge from the prevailing civilisational paradigm: the interaction of its operational evolutionary game-theory, political economy and cultural psychology with advanced technology. Whilst the metacrisis has existed in proto-form throughout history, it is expressed most acutely in our current era of late-stage modernity where it has become existential.</p>
 
               <p><em>See also</em> <a href="https://maxramsahoye.github.io/themetacrisisdefined/" target="_blank" rel="noopener">The Metacrisis Defined</a>.</p>
 

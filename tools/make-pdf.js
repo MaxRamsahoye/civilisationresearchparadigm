@@ -105,6 +105,9 @@ const CSS = `
   #contents .live-list:not(.live-sub) > li { break-inside: avoid; }
   #contents .live-sub { font-size: 9pt; }
   hr { border: 0; border-top: 0.75pt solid #999; margin: 16pt 0; }
+  /* numbered definitions (I, II): the numeral in the left margin */
+  p.definition { position: relative; }
+  p.definition::before { content: attr(data-num); position: absolute; top: 0.3em; right: calc(100% + 9pt); font-family: 'IBM Plex Sans', sans-serif; font-size: 8.5pt; font-weight: 500; letter-spacing: 0.08em; color: #167e49; }
   /* quotations set in, with a rule down the left */
   blockquote { margin: 10pt 0 12pt; padding-left: 14pt; border-left: 1pt solid #000; font-size: 12pt; }
   blockquote p:last-child { margin-bottom: 0; }
