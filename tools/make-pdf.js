@@ -105,6 +105,8 @@ const CSS = `
   #contents .live-list:not(.live-sub) > li { break-inside: avoid; }
   #contents .live-sub { font-size: 9pt; }
   hr { border: 0; border-top: 0.75pt solid #999; margin: 16pt 0; }
+  /* See also lines in IBM Plex Sans */
+  p.see-also { font-family: 'IBM Plex Sans', sans-serif; font-size: 10pt; }
   /* numbered definitions (I, II): the numeral in the left margin */
   p.definition { position: relative; }
   p.definition::before { content: attr(data-num); position: absolute; top: 0.3em; right: calc(100% + 9pt); font-family: 'IBM Plex Sans', sans-serif; font-size: 8.5pt; font-weight: 500; letter-spacing: 0.08em; color: #167e49; }
