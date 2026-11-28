@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" class="hide-scrollbar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Civilisational: a reading list, and an entry into the civilisation research paradigm.">
+  <link id="favicon-ico" rel="icon" href="../favicon/favicon-light.ico?v=grid2" sizes="any">
+  <link id="favicon-32" rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32-light.png?v=grid2">
+  <link id="favicon-192" rel="icon" type="image/png" sizes="192x192" href="../favicon/favicon-192-light.png?v=grid2">
+  <link id="favicon-apple" rel="apple-touch-icon" href="../favicon/apple-touch-icon-light.png?v=grid2">
+  <script>
+    try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        // a refresh always lands at the top of the page, even with a section in the address
+        var navType = (performance.getEntriesByType && (performance.getEntriesByType('navigation')[0] || {}).type) || '';
+        if (navType === 'reload' && location.hash) history.replaceState(null, '', location.pathname + location.search);
+        if (navType === 'reload') window.addEventListener('load', function () { window.scrollTo(0, 0); });
+    } catch (e) {}
+    try {
+      var navEntry = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+      // arriving from another page of this site (its own folder: another site may share the address), or a refresh, or back/forward: fade in
+      var fromSite = false;
+      try { fromSite = !!document.referrer && (function (r, s) { return r.origin === s.origin && r.pathname.indexOf(s.pathname) === 0; })(new URL(document.referrer), new URL('../', location.href)); } catch (e) {}
+      // browsers with cross-document view transitions crossfade between pages
+      // themselves; the others fade out and in (and so does a refresh)
+      var vt = 'CSSViewTransitionRule' in window;
+      if (vt) document.documentElement.classList.add('vt');
+      if ((fromSite || (navEntry && navEntry.type !== 'navigate')) && (!vt || (navEntry && navEntry.type === 'reload'))) document.documentElement.classList.add('page-entering');
+    } catch (e) {}
+    try {
+      // no theme chosen yet: follow the system setting
+      var sys = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      var t = localStorage.getItem('crp.theme');
+      // a theme chosen with t holds only until the system setting changes
+      if (t && localStorage.getItem('crp.themeSystem') !== sys) { t = null; localStorage.removeItem('crp.theme'); }
+      t = t || sys;
+      if (t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      if (localStorage.getItem('crp.blueLinks') !== 'off') document.documentElement.classList.add('colour');  // blue links (c): on by default
+      if (localStorage.getItem('crp.headings') !== 'sans') document.documentElement.classList.add('serif-headings');
+      // the band colour (b): midnight green by default, or sepia, midnight blue or black
+      var band = localStorage.getItem('crp.bandColour') || 'green';
+      if (band === 'purple') band = 'green';
+      if (band === 'green' || band === 'midnight' || band === 'black') document.documentElement.classList.add('band-' + band);
+    } catch (e) {}
+  </script>
+  <title>Reading List — Civilisational Paradigm</title>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Civilisational Paradigm">
+  <meta property="og:title" content="Civilisational: Reading List">
+  <meta property="og:description" content="Civilisational: a reading list, and an entry into the civilisation research paradigm.">
+  <meta property="og:url" content="https://maxramsahoye.github.io/civilisationresearchparadigm/readings/">
+  <meta property="og:image" content="https://maxramsahoye.github.io/civilisationresearchparadigm/preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="../assets/site.css?v=1fbc4b80" rel="stylesheet">
+  <style>
+    /* the reading list: a band at the top with the epigraph, title and
+       subtitle, then the list by section, each entry its linked title with
+       the author, venue and year beneath; a reading under another is set in */
+    .site-footer,
+    .top-nav { display: none !important; }
+
+    /* (the site's name pinned in the top-right corner, as on the PDF page) */
+    .site-title,
+    body.footer-in-view .site-title {
+      position: fixed; z-index: 10; top: 32px; right: 40px; left: auto; bottom: auto;
+      margin: 0; text-align: right; opacity: 1; pointer-events: auto;
+    }
+    @media (max-width: 960px) {
+      .site-title, body.footer-in-view .site-title { top: 26px; right: 24px; }
+    }
+    @media (max-width: 900px) {
+      .site-title, body.footer-in-view .site-title { position: absolute; }
+    }
+    @media (max-width: 600px) {
+      .site-title, body.footer-in-view .site-title { top: 22px; font-size: 15px; }
+    }
+
+    .rl-top {
+      background: var(--band-bg);
+      padding: 168px 24px 72px;
+    }
+    .rl-top-inner,
+    .rl-main {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .rl-epigraph {
+      margin: 0 0 40px;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.35;
+    }
+    .rl-epigraph cite {
+      display: block;
+      margin-top: 6px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-style: normal;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+    .rl-top .page-title {
+      margin: 0 0 16px;
+    }
+    .rl-top .page-intro {
+      margin: 0 0 40px;
+    }
+    .rl-count {
+      margin: 0 0 14px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+    .rl-contents {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      columns: 3;
+      column-gap: 32px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .rl-contents li { break-inside: avoid; margin: 0 0 6px; padding-left: 1.3em; text-indent: -1.3em; }
+    .rl-contents li::before { content: '\2014\00a0\00a0'; }
+    .rl-contents a { color: inherit; text-decoration: none; }
+    .rl-contents a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    @media (max-width: 700px) {
+      .rl-contents { columns: 2; }
+    }
+    @media (max-width: 600px) {
+      .rl-contents { columns: 1; }
+    }
+
+    .rl-main {
+      padding: 24px 24px 120px;
+      box-sizing: content-box;
+    }
+    .rl-section {
+      scroll-margin-top: 40px;
+    }
+    .rl-section h2 {
+      margin: 64px 0 8px;
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.2;
+      font-synthesis: none;
+      -webkit-text-stroke: 0.7px currentColor;
+    }
+    .rl-section h2 a { color: inherit; text-decoration: none; }
+    .rl-note {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+    .rl-list,
+    .rl-children {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .rl-list { margin-top: 20px; }
+    .rl-entry {
+      margin: 0 0 20px;
+      padding-left: 1.3em;
+      text-indent: -1.3em;
+    }
+    .rl-entry::before {
+      content: '\2014\00a0\00a0';
+      color: var(--link-blue);
+    }
+    .rl-entry > * { text-indent: 0; }
+    .rl-children { margin-top: 14px; }
+    .rl-entry.rl-sub { margin-bottom: 14px; }
+    .rl-entry.rl-sub::before {
+      content: '\25CB\00a0\00a0';
+      font-size: 0.7em;
+      vertical-align: 0.15em;
+    }
+    .rl-title {
+      font-family: var(--serif);
+      font-size: 21px;
+      line-height: 1.35;
+      color: var(--canvas-ink);
+      text-decoration: underline;
+      text-decoration-color: color-mix(in srgb, var(--link-blue) 60%, transparent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+    .rl-title:hover { color: var(--link-blue); text-decoration-color: currentColor; }
+    .rl-sub .rl-title { font-size: 19px; }
+    .rl-meta {
+      display: block;
+      margin-top: 3px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+    .rl-meta a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+    @media (max-width: 600px) {
+      .rl-top { padding-top: 120px; }
+      .rl-title { font-size: 19px; }
+      .rl-sub .rl-title { font-size: 17px; }
+      .rl-section h2 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="back-arrow" href="../" aria-label="Back to the article" data-direct>
+    <svg viewBox="0 0 26 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="butt" stroke-linejoin="miter">
+      <path d="M10,1.5 L5,6 L18,6 A4,4 0 0 1 18,14 L1,14"/>
+      <path d="M10,10.5 L5,6"/>
+    </svg>
+  </a>
+
+  <main>
+    <div class="rl-top on-band">
+      <div class="rl-top-inner">
+        <p class="rl-epigraph">&lsquo;Books are the carriers of civilization&rsquo;<cite>Barbara W. Tuchman</cite></p>
+        <h1 class="page-title"><a class="heading-link title-top" href="#">Civilisational: Reading List</a></h1>
+        <p class="page-intro">An entry into the civilisation research paradigm</p>
+        <p class="rl-count">41 readings in 9 sections</p>
+        <ul class="rl-contents" aria-label="Sections">
+          <li><a href="#civilisational-mechanics">Civilisational Mechanics</a></li>
+          <li><a href="#civilisation-design">Civilisation Design</a></li>
+          <li><a href="#civilisational-transition">Civilisational Transition</a></li>
+          <li><a href="#civilisational-alignment">Civilisational Alignment</a></li>
+          <li><a href="#the-metacrisis">The Metacrisis</a></li>
+          <li><a href="#metamodernism">Metamodernism</a></li>
+          <li><a href="#macrostrategy">Macrostrategy</a></li>
+          <li><a href="#macroeconomics">Macroeconomics</a></li>
+          <li><a href="#classics">Classics</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rl-main">
+      <section class="rl-section" id="civilisational-mechanics">
+        <h2><a class="heading-link" href="#civilisational-mechanics">Civilisational Mechanics</a></h2>
+        <ul class="rl-list">
+          <li class="rl-entry">
+            <a class="rl-title" href="https://www.allandafoe.com/technologicaldeterminism" target="_blank" rel="noopener">On Technological Determinism: A Typology, Scope Conditions, and a Mechanism</a>
+            <span class="rl-meta"><em>Science, Technology, &amp; Human Values</em> &middot; Allan Dafoe (2015)</span>
+            <ul class="rl-children">
+              <li class="rl-entry rl-sub">
+                <a class="rl-title" href="https://www.lesswrong.com/posts/q3YmKemEzyrcphAeP/darwinian-traps-and-existential-risks" target="_blank" rel="noopener">Darwinian Traps and Existential Risks</a>
+                <span class="rl-meta">Kristian Ronn &middot; <em>LessWrong</em> (2024)</span>
+              </li>
+              <li class="rl-entry rl-sub">
+                <a class="rl-title" href="https://slatestarcodex.com/2014/07/30/meditations-on-moloch/" target="_blank" rel="noopener">Meditations on Moloch</a>
+                <span class="rl-meta">Scott Alexander &middot; <em>Slate Star Codex</em> (2014)</span>
+              </li>
+              <li class="rl-entry rl-sub">
+                <a class="rl-title" href="https://philpapers.org/archive/ASSWHC.pdf" target="_blank" rel="noopener">Will Humanity Choose Its Future?</a>
+                <span class="rl-meta">Guive Assadi &middot; Center for the Governance of AI (2023)</span>
+              </li>
+            </ul>
+          </li>
+          <li class="rl-entry">
+            <a class="rl-title" href="https://consilienceproject.org/development-in-progress/" target="_blank" rel="noopener">Development in Progress</a>
+            <span class="rl-meta">The Consilience Project (2024)</span>
+            <ul class="rl-children">
+              <li class="rl-entry rl-sub">
+                <a class="rl-title" href="https://consilienceproject.org/technology-is-not-values-neutral-ending-the-reign-of-nihilistic-design-2/" target="_blank" rel="noopener">Technology is Not Values Neutral: Ending the Reign of Nihilistic Design</a>
+                <span class="rl-meta">(2022)</span>
+              </li>
+              <li class="rl-entry rl-sub">
+                <a class="rl-title" href="https://consilienceproject.org/the-case-against-naive-technocapitalist-optimism/" target="_blank" rel="noopener">The Case Against Naive Technocapitalist Optimism</a>
+                <span class="rl-meta">(2021)</span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section class="rl-section" id="civilisation-design">
+        <h2><a class="heading-link" href="#civilisation-design">Civilisation Design</a></h2>
+        <ul class="rl-list">
+          <li class="rl-entry">
+            <a class="rl-title" href="https://consilienceproject.org/development-in-progress/#:~:text=Below%20is%20a,rather%20than%20costs." target="_blank" rel="noopener">Yellow Teaming in &lsquo;Development in Progress&rsquo;</a>
+            <span class="rl-meta">The Consilience Project (2024)</span>
+            <ul class="rl-children">
+              <li class="rl-entry rl-sub">
+                <a class="rl-title" href="https://civilizationresearchinstitute.org/research/prudent-problem-solving/" target="_blank" rel="noopener">Steps for Prudent Problem-Solving</a>
+              </li>
+              <li class="rl-entry rl-sub">
+                <a class="rl-title" href="https://civilizationresearchinstitute.org/research/advanced-technology-regulation/" target="_blank" rel="noopener">General Regulatory Process for Advanced Technology</a>
+              </li>
+            </ul>
+          </li>
+          <li class="rl-entry">
+            <a class="rl-title" href="https://juliagalef.com/2017/02/19/can-we-intentionally-improve-the-world-planners-vs-hayekians/" target="_blank" rel="noopener">Can We Intentionally Improve the World? Planners vs. Hayekians</a>
+            <span class="rl-meta">Julia Galef (2017)</span>
+            <ul class="rl-children">
+              <li class="rl-entry rl-sub">
+                <a class="rl-title" href="https://helentoner.substack.com/p/dynamism-vs-stasis" target="_blank" rel="noopener">In Search of a Dynamist Vision for Safe Superhuman AI</a>
+                <span class="rl-meta">Helen Toner (2025)</span>
+              </li>
+            </ul>
+          </li>
+          <li class="rl-entry">
+            <a class="rl-title" href="https://youtu.be/WVEP0zAK-xQ?si=xUWgCbw1TbiMt7ng" target="_blank" rel="noopener">The Three Attractors Model</a>
+            <span class="rl-meta">Daniel Schmachtenberger &middot; Greenpill (2022)</span>
+          </li>
+          <li class="rl-entry">
+            <a class="rl-title" href="https://youtu.be/wbTEyaeHNuo?si=y_Z0XOkrord8lF19" target="_blank" rel="noopener">In Search of the Third Attractor</a>
+            <span class="rl-meta">Project Liminality</span>
+          </li>
+          <li class="rl-entry">
+            <a class="rl-title" href="https://www.lesswrong.com/posts/TxPeQ85yxpcdfq2wg/metacrisis-as-a-framework-for-ai-governance" target="_blank" rel="noopener">The Metacrisis as a Framework for AI Governance</a>
+            <span class="rl-meta">Jonah Wilberg &middot; <em>The Wider Angle</em> &amp; <em>LessWrong</em> (2025)</span>
+          </li>
+          <li class="rl-entry">
+            <a class="rl-title" href="https://nickbostrom.com/papers/vulnerable.pdf" target="_blank" rel="noopener">The Vulnerable World Hypothesis</a>
+            <span class="rl-meta">Nick Bostrom &middot; <em>Global Policy</em> (2019)</span>
+            <ul class="rl-children">
+              <li class="rl-entry rl-sub">
+                <a class="rl-title" href="https://nickbostrom.com/fut/singleton" target="_blank" rel="noopener">What is a Singleton?</a>
+                <span class="rl-meta">Nick Bostrom (2005)</span>
+              </li>
+              <li class="rl-entry rl-sub">
+                <a class="rl-title" href="https://arxiv.org/abs/2503.05710" target="_blank" rel="noopener">AGI, Governments, and Free Societies</a>
+                <span class="rl-meta">Hammond et al (2025)</span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section class="rl-section" id="civilisational-transition">
+        <h2><a class="heading-link" href="#civilisational-transition">Civilisational Transition</a></h2>
+        <ul class="rl-list">
+          <li class="rl-entry">
+            <a class="rl-title" href="https://www.are.na/block/47984319" target="_blank" rel="noopener">Reality Check?</a>
+            <span class="rl-meta">Civilisation Research Institute (2025)</span>
+          </li>
+          <li class="rl-entry">
+            <a class="rl-title" href="https://www.lesswrong.com/posts/mtASw9zpnKz4noLFA/gradual-paths-to-collective-flourishing" target="_blank" rel="noopener">Gradual Paths to Collective Flourishing</a>
+            <span class="rl-meta">Nora Ammann &middot; <em>AI Alignment Forum</em> (2026)</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="rl-section" id="civilisational-alignment">
+        <h2><a class="heading-link" href="#civilisational-alignment">Civilisational Alignment</a></h2>
+        <ul class="rl-list">
+          <li class="rl-entry">
+            <a class="rl-title" href="https://dl.acm.org/doi/10.1145/3461702.3462581" target="_blank" rel="noopener">Feeding the Beast: Superintelligence, Corporate Capitalism &amp; The End of Humanity</a>
+            <span class="rl-meta">Dominic Legget &middot; AI, Ethics, and Society Conference (2021)</span>
+            <ul class="rl-children">
+              <li class="rl-entry rl-sub">
+                <a class="rl-title" href="https://www.youtube.com/watch?v=KCSsKV5F4xc" target="_blank" rel="noopener">AI, Capitalism, Misalignment &amp; Moloch</a>
+                <span class="rl-meta">Schmachtenberger &amp; Boeree</span>
+              </li>
+            </ul>
+          </li>
+          <li class="rl-entry">
+            <a class="rl-title" href="https://www.versobooks.com/en-gb/blogs/news/3022-notes-on-exterminism-the-last-stage-of-civilization" target="_blank" rel="noopener">Notes on Exterminism: The Last Stage of Civilisation</a>
+            <span class="rl-meta">Edward Thompson &middot; <em>New Left Review</em> (1980)</span>
+            <ul class="rl-children">
+              <li class="rl-entry rl-sub">
+                <a class="rl-title" href="https://journals.sagepub.com/doi/10.1177/03063968211054857" target="_blank" rel="noopener">Notes on exhaustionism, the latest moment of the global organic crisis</a>
+                <span class="rl-meta">Blake Stewart &middot; <em>Race &amp; Class</em> (2021)</span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section class="rl-section" id="the-metacrisis">
+        <h2><a class="heading-link" href="#the-metacrisis">The Metacrisis</a></h2>
+        <ul class="rl-list">
+          <li class="rl-entry">
+            <a class="rl-title" href="https://thewiderangle.substack.com/p/metacrisis-an-overview" target="_blank" rel="noopener">The Metacrisis: An Overview</a>
+            <span class="rl-meta">Jonah Wilberg &middot; <em>The Wider Angle</em> (2025)</span>
+          </li>
+          <li class="rl-entry">
+            <a class="rl-title" href="https://docs.google.com/document/d/1wz6P6jepA0I1Fvm0Y_PtI8mQGp4qSF_rg4wHz1lY8Dg/edit?usp=sharing" target="_blank" rel="noopener">The Metacrisis &amp; Third Attractor</a>
+            <span class="rl-meta">Civilisation Research Institute (2023)</span>
+            <ul class="rl-children">
+              <li class="rl-entry rl-sub">
+                <a class="rl-title" href="https://civilizationemerging.com/new-economics-series-1/" target="_blank" rel="noopener">&lsquo;When the System Is the Source of the Problems: Case Studies&rsquo;</a>
+                <span class="rl-meta"><em>New Economics Series: Part 3</em> &middot; Daniel Schmachtenberger &middot; <em>Civilization Emerging</em> (2017)</span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section class="rl-section" id="metamodernism">
+        <h2><a class="heading-link" href="#metamodernism">Metamodernism</a></h2>
+        <ul class="rl-list">
+          <li class="rl-entry">
+            <a class="rl-title" href="https://metamoderna.org/metamodernism/" target="_blank" rel="noopener">What is Metamodernism?</a>
+            <span class="rl-meta">Metamoderna (2017)</span>
+          </li>
+          <li class="rl-entry">
+            <a class="rl-title" href="https://thewiderangle.substack.com/p/what-is-metamodernism" target="_blank" rel="noopener">What is Metamodernism? An Overview</a>
+            <span class="rl-meta">Jonah Wilberg &middot; <em>The Wider Angle</em> (2025)</span>
+          </li>
+          <li class="rl-entry">
+            <a class="rl-title" href="https://appliedmetatheory.org/mapping-ecology-integrative-approaches-addressing-metacrisis/" target="_blank" rel="noopener">Mapping an Ecology of Integrative Approaches to Addressing the Metacrisis</a>
+            <span class="rl-meta">Brandon Norgaard, Nicholas Hedlund and Claudia Meglin &middot; Institute for Applied Metatheory (2025)</span>
+          </li>
+          <li class="rl-entry">
+            <a class="rl-title" href="https://news.lifeitself.org/p/from-polycrisis-to-metacrisis-a-short" target="_blank" rel="noopener">From Polycrisis to Metacrisis: A Short Introduction</a>
+            <span class="rl-meta">Rufus Pollock and Rosie Bell &middot; Life Itself Sensemaking Studio (2025)</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="rl-section" id="macrostrategy">
+        <h2><a class="heading-link" href="#macrostrategy">Macrostrategy</a></h2>
+        <p class="rl-note">Major maps of the future along technological, political, economic and cultural dimensions.</p>
+        <ul class="rl-list">
+          <li class="rl-entry">
+            <a class="rl-title" href="https://nickbostrom.com/papers/future.pdf" target="_blank" rel="noopener">The Future of Humanity</a>
+            <span class="rl-meta">Nick Bostrom &middot; <em>Geopolitics, History, and International Relations</em> (2007)</span>
+          </li>
+          <li class="rl-entry">
+            <a class="rl-title" href="https://www.jstor.org/stable/24027184" target="_blank" rel="noopener">The End of History?</a>
+            <span class="rl-meta">Francis Fukuyama &middot; <em>The National Interest</em> (1989)</span>
+          </li>
+          <li class="rl-entry">
+            <a class="rl-title" href="https://www.grip.org/wp-content/uploads/2003/05/THE-CLASH-OF-CIVILIZATIONS_1993_Huntington.pdf" target="_blank" rel="noopener">The Clash of Civilizations?</a>
+            <span class="rl-meta">Samuel P. Huntington &middot; <em>Foreign Affairs</em> (1993)</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="rl-section" id="macroeconomics">
+        <h2><a class="heading-link" href="#macroeconomics">Macroeconomics</a></h2>
+        <p class="rl-note">The post-work and post-scarcity future of economics; and the risks on the path there.</p>
+        <ul class="rl-list">
+          <li class="rl-entry">
+            <a class="rl-title" href="https://youtu.be/AIWlsSOubts?si=ugzOfNv1FhU39w9J" target="_blank" rel="noopener">The Fourth Frontier</a>
+            <span class="rl-meta">Bret Weinstein (2018)</span>
+            <ul class="rl-children">
+              <li class="rl-entry rl-sub">
+                <a class="rl-title" href="https://aiprospects.substack.com/p/paretotopian-goal-alignment" target="_blank" rel="noopener">Paretotopian Goal Alignment</a>
+                <span class="rl-meta">K. Eric Drexler &middot; <em>AI Prospects</em> (2024); see also his <a href="https://www.effectivealtruism.org/articles/ea-global-2018-paretotopian-goal-alignment" target="_blank" rel="noopener">presentation at EA Global</a> (2018)</span>
+              </li>
+            </ul>
+          </li>
+          <li class="rl-entry">
+            <a class="rl-title" href="https://jacobin.com/2011/12/four-futures" target="_blank" rel="noopener">Four Futures</a>
+            <span class="rl-meta">Peter Frase &middot; <em>Jacobin</em> (2011)</span>
+            <ul class="rl-children">
+              <li class="rl-entry rl-sub">
+                <a class="rl-title" href="https://gradual-disempowerment.ai/" target="_blank" rel="noopener">Gradual Disempowerment</a>
+                <span class="rl-meta">Jan Kulveit et al &middot; Alignment of Complex Systems Research Group (2025)</span>
+              </li>
+              <li class="rl-entry rl-sub">
+                <a class="rl-title" href="https://intelligence-curse.ai/" target="_blank" rel="noopener">The Intelligence Curse</a>
+                <span class="rl-meta">Luke Drago &amp; Rudolph Laine &middot; Workshop Labs (2025)</span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section class="rl-section" id="classics">
+        <h2><a class="heading-link" href="#classics">Classics</a></h2>
+        <ul class="rl-list">
+          <li class="rl-entry">
+            <a class="rl-title" href="http://www.econ.yale.edu/smith/econ116a/keynes1.pdf" target="_blank" rel="noopener">Economic Possibilities for Our Grandchildren</a>
+            <span class="rl-meta">John Maynard Keynes (1930)</span>
+          </li>
+          <li class="rl-entry">
+            <a class="rl-title" href="https://archive.org/details/fp_HumanitysPath" target="_blank" rel="noopener">Humanity&rsquo;s Critical Path: From Livingry to Weaponry</a>
+            <span class="rl-meta">R. Buckminster Fuller (1983)</span>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" type="button" aria-label="Scroll to top">
+    <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round">
+      <polygon points="14,9.078 20.328,18.922 14,15.969 7.672,18.922"/>
+    </svg>
+  </button>
+  <script>
+    // the up arrow, once the top band has scrolled away
+    (function () {
+      var up = document.querySelector('.scroll-top-btn');
+      function show() { up.classList.toggle('visible', window.scrollY > 600); }
+      window.addEventListener('scroll', show, { passive: true });
+      show();
+    })();
+  </script>
+
+  <a class="site-title" href="../">Civilisational<br>Paradigm</a>
+
+  <script src="../assets/site.js?v=40fb711a" data-base="../"></script>
+  <script src="../assets/tools.js?v=95888483"></script>
+</body>
+</html>
