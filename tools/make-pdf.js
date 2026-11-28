@@ -71,26 +71,29 @@ const CSS = `
   @page band { margin: 0; background: #0a2d1b; @bottom-left { content: none; } @bottom-right { content: none; } }
   .band-page {
     page: band; break-before: page; break-inside: avoid;
-    box-sizing: border-box; min-height: 296.5mm; margin: 0 -24mm; padding: 18mm 24mm;
+    box-sizing: border-box; min-height: 296.5mm; margin: 0 -24mm; padding: 14mm 24mm;
     display: flex; flex-direction: column; justify-content: center;
     background: #0a2d1b; color: #fbf6ec;
   }
   .band-page a { color: inherit; text-decoration: underline; text-underline-offset: 2pt; }
+  /* (the contents are links, but read as a plain list) */
+  .band-page #contents a { text-decoration: none; }
+  .band-page #contents .live-list.contents-after { columns: 1; margin-top: 8pt; }
   /* a little smaller than the article's text, so that the Overview keeps to its page */
   .band-page { font-size: 11.5pt; line-height: 1.36; }
   .band-page h2 { font-size: 17pt; }
-  .band-page section + section { margin-top: 20pt; }
+  .band-page section + section { margin-top: 16pt; }
   .band-page h2 { margin-top: 0; }
   .band-page p + h2 { margin-top: 14pt; }
   .band-page section > :last-child { margin-bottom: 0; }
   /* the darker band of the site (Structure): edge to edge across its page, in
      the darker shade of the midnight green */
-  .band-page section.band-alt { margin: 0 -24mm; padding: 11mm 24mm; background: #092617; }
+  .band-page section.band-alt { margin: 0 -24mm; padding: 9mm 24mm; background: #092617; }
   /* first on its page, it runs up to the top edge: the top of the page, not
      a band across it, and what follows sits below it rather than centred */
   .band-page:has(> section.band-alt:first-child) { justify-content: flex-start; }
   .band-page > section.band-alt:first-child { margin-top: -24mm; padding-top: 30mm; padding-bottom: 20mm; }
-  .band-page section.band-alt + section { margin-top: 26pt; }
+  .band-page section.band-alt + section { margin-top: 20pt; }
   /* the article proper starts on a page of its own */
   .article-start { break-before: page; }
   .article-start > h2:first-child { margin-top: 0; }

@@ -1639,6 +1639,27 @@
       break-inside: avoid;
     }
 
+    /* the contents are links to their sections, in the list's own colour,
+       underlined on hover */
+    .article-body #contents .live-list a {
+      color: inherit;
+      font-weight: inherit;
+      text-decoration: none;
+      text-underline-offset: 3px;
+    }
+
+    .article-body #contents .live-list a:hover,
+    .article-body #contents .live-list a:focus-visible {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+    }
+
+    /* the closing section, on a line of its own below the columns */
+    #contents .live-list.contents-after {
+      columns: 1;
+      margin-top: 20px;
+    }
+
     /* a short list keeps to a single column */
     #contents .live-list.one-col {
       columns: 1;
@@ -2631,27 +2652,31 @@
               <h2><a class="heading-link" href="#contents">Contents</a></h2>
 
               <ul class="dash-list live-list">
-                <li><em>Civilisational</em>
+                <li><a href="#civilisational"><em>Civilisational</em></a>
                   <ul class="dash-list live-sub">
-                    <li>Civilisational Mechanics</li>
-                    <li>Civilisation Design</li>
-                    <li>Civilisational Transition</li>
+                    <li><a href="#civilisational-mechanics">Civilisational Mechanics</a></li>
+                    <li><a href="#civilisation-design">Civilisation Design</a></li>
+                    <li><a href="#civilisational-transition">Civilisational Transition</a></li>
                   </ul>
                 </li>
-                <li><em>Meta</em>
+                <li><a href="#meta"><em>Meta</em></a>
                   <ul class="dash-list live-sub">
-                    <li>Metacrisis</li>
-                    <li>Metamodernism</li>
-                    <li>Metatheory</li>
+                    <li><a href="#metacrisis">Metacrisis</a></li>
+                    <li><a href="#metamodernism">Metamodernism</a></li>
+                    <li><a href="#metatheory">Metatheory</a></li>
                   </ul>
                 </li>
-                <li><em>Macro</em>
+                <li><a href="#macro"><em>Macro</em></a>
                   <ul class="dash-list live-sub">
-                    <li>Macrohistory</li>
-                    <li>Macrosociology</li>
-                    <li>Macrostrategy</li>
+                    <li><a href="#macrohistory">Macrohistory</a></li>
+                    <li><a href="#macrosociology">Macrosociology</a></li>
+                    <li><a href="#macrostrategy">Macrostrategy</a></li>
                   </ul>
                 </li>
+              </ul>
+
+              <ul class="dash-list live-list contents-after">
+                <li><a href="#agenda"><em>Civilisation Research: Agenda</em></a></li>
               </ul>
             </section>
 
